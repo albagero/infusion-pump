@@ -66,21 +66,22 @@ const TypesSection = () => {
   return (
     <SlideWrapper className="bg-section-gradient" id="pump-types">
       <div className="w-full h-full flex flex-col justify-center px-4 py-4 sm:px-8 sm:py-6 lg:px-20 max-w-7xl mx-auto overflow-hidden">
-        <div className="text-center mb-4 sm:mb-8 sm:mb-12">
-          <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-2 block">
+        <div className="text-center mb-2 sm:mb-8 sm:mb-12">
+          <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">
             07
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-2 sm:mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-1 sm:mb-4">
             Types of Infusion Pumps
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-500">
+          <p className="text-xs sm:text-base lg:text-lg text-gray-500">
             Each type is optimized for different clinical applications
           </p>
         </div>
 
         {/* Cards Grid */}
         <motion.div 
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4 lg:gap-6 mb-4 sm:mb-8"
+          className="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible gap-2 sm:gap-4 lg:gap-6 mb-2 sm:mb-8 pb-2 snap-x snap-mandatory"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -91,7 +92,7 @@ const TypesSection = () => {
               key={index}
               variants={itemVariants}
               onClick={() => setSelectedType(index)}
-              className={`cursor-pointer glass-card p-3 sm:p-6 flex flex-col items-center text-center rounded-2xl transition-all duration-300 relative overflow-hidden group ${selectedType === index ? 'ring-2 ring-medical-blue scale-105 shadow-xl' : 'hover:bg-blue-50/50 hover:-translate-y-1'}`}
+              className={`snap-start flex-shrink-0 w-36 sm:w-44 lg:w-auto cursor-pointer glass-card p-3 sm:p-6 flex flex-col items-center text-center rounded-2xl transition-all duration-300 relative overflow-hidden group ${selectedType === index ? 'ring-2 ring-medical-blue scale-105 shadow-xl' : 'hover:bg-blue-50/50 hover:-translate-y-1'}`}
             >
               {pump.isHighlight && (
                 <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-medical-blue to-medical-cyan"></div>
@@ -102,7 +103,7 @@ const TypesSection = () => {
               </div>
               
               <h3 className="font-bold text-navy-900 text-xs sm:text-sm mb-1">{pump.name}</h3>
-              <p className="text-[10px] sm:text-xs text-medical-blue font-semibold uppercase tracking-wider">{pump.shortDesc}</p>
+              <p className="text-[9px] sm:text-xs text-medical-blue font-semibold uppercase tracking-wider">{pump.shortDesc}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -119,26 +120,26 @@ const TypesSection = () => {
               className="glass-card p-3 sm:p-6 rounded-3xl shadow-2xl border border-white/50 max-w-5xl mx-auto flex flex-col sm:flex-row gap-4 sm:gap-8 items-center"
             >
               {/* Large Image Container */}
-              <div className="w-full sm:w-48 h-32 sm:h-48 flex-shrink-0 rounded-2xl overflow-hidden shadow-inner border border-gray-100 bg-white group">
+              <div className="w-full sm:w-48 h-24 sm:h-48 flex-shrink-0 rounded-xl sm:rounded-2xl overflow-hidden shadow-inner border border-gray-100 bg-white group flex items-center justify-center">
                 <img 
                   src={pumpTypes[selectedType].image} 
                   alt={pumpTypes[selectedType].name}
-                  className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-contain p-2 sm:p-0 transform transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
               
               {/* Text Content */}
               <div className="flex-1 flex flex-col justify-center">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-medical-blue to-medical-cyan flex items-center justify-center flex-shrink-0 text-white shadow-md">
+                <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-4">
+                  <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-medical-blue to-medical-cyan flex items-center justify-center flex-shrink-0 text-white shadow-md">
                     {pumpTypes[selectedType].icon}
                   </div>
                   <div>
-                    <h4 className="text-xl sm:text-3xl font-bold text-navy-900">{pumpTypes[selectedType].name}</h4>
-                    <span className="text-sm text-medical-blue font-bold uppercase tracking-widest">{pumpTypes[selectedType].shortDesc}</span>
+                    <h4 className="text-base sm:text-3xl font-bold text-navy-900">{pumpTypes[selectedType].name}</h4>
+                    <span className="text-[10px] sm:text-sm text-medical-blue font-bold uppercase tracking-widest">{pumpTypes[selectedType].shortDesc}</span>
                   </div>
                 </div>
-                <p className="text-sm sm:text-base lg:text-xl text-gray-600 leading-relaxed max-w-2xl mt-2 sm:mt-4">
+                <p className="text-xs sm:text-base lg:text-xl text-gray-600 leading-relaxed max-w-2xl mt-1 sm:mt-4">
                   {pumpTypes[selectedType].fullDesc}
                 </p>
               </div>
