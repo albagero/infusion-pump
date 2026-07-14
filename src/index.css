@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== GLOBAL RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #F8FAFC;
+  color: #111827;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== SCROLL CONTAINER ===== */
+.slide-container {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.slide-container::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.slide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== ECG LINE ANIMATION ===== */
+.ecg-path {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: ecgDraw 2.5s linear infinite;
+}
+
+@keyframes ecgDraw {
+  0% {
+    stroke-dashoffset: 800;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ===== GLASSMORPHISM CARD ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  box-shadow: 0 12px 48px rgba(37, 99, 235, 0.12);
+  transform: translateY(-4px);
+}
+
+.glass-card-dark {
+  background: rgba(15, 32, 53, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== GRADIENT TEXT ===== */
+.gradient-text {
+  background: linear-gradient(135deg, #2563EB, #60A5FA, #38BDF8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-green {
+  background: linear-gradient(135deg, #10B981, #34D399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== GRADIENT BACKGROUNDS ===== */
+.bg-hero-gradient {
+  background: linear-gradient(135deg, #0A1628 0%, #1E3A5F 50%, #254A78 100%);
+}
+
+.bg-section-gradient {
+  background: linear-gradient(180deg, #F8FAFC 0%, #EFF6FF 100%);
+}
+
+.bg-dark-gradient {
+  background: linear-gradient(135deg, #0A1628 0%, #0F2035 50%, #1E3A5F 100%);
+}
+
+.bg-future-gradient {
+  background: linear-gradient(135deg, #0A1628 0%, #1E3A5F 40%, #2563EB 100%);
+}
+
+/* ===== FLOW ARROW ===== */
+.flow-arrow {
+  position: relative;
+}
+
+.flow-arrow::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid #2563EB;
+}
+
+/* ===== ANIMATED BORDER ===== */
+.animated-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #2563EB, #60A5FA, #10B981, #2563EB);
+  background-size: 300% 300%;
+  animation: gradientBorder 4s ease infinite;
+  z-index: -1;
+  border-radius: 18px;
+}
+
+@keyframes gradientBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== TAB BUTTON ===== */
+.tab-button {
+  @apply px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300;
+}
+
+.tab-button.active {
+  @apply bg-medical-blue text-white shadow-lg;
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+}
+
+.tab-button:not(.active) {
+  @apply bg-white text-gray-600 hover:bg-blue-50 border border-gray-200;
+}
+
+/* ===== PULSE DOT ===== */
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  background: #10B981;
+  border-radius: 50%;
+  position: relative;
+}
+
+.pulse-dot::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.3);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ===== FLOATING PARTICLES ===== */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(37, 99, 235, 0.2);
+  border-radius: 50%;
+  animation: floatParticle 8s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  25% { transform: translate(20px, -30px) scale(1.5); opacity: 0.6; }
+  50% { transform: translate(-10px, -60px) scale(1); opacity: 0.3; }
+  75% { transform: translate(30px, -30px) scale(1.5); opacity: 0.6; }
+}
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2563EB, #60A5FA, #38BDF8);
+  z-index: 100;
+  transition: width 0.3s ease;
+}
+
+/* ===== CHECKLIST STYLE ===== */
+.checklist-item {
+  @apply flex items-center gap-3 py-2;
+}
+
+.checklist-item .check-box {
+  @apply w-5 h-5 rounded border-2 border-gray-300 flex items-center justify-center flex-shrink-0;
+}
+
+/* ===== RESPONSIVE HELPERS ===== */
+@media (max-width: 768px) {
+  .slide {
+    padding: 1rem;
+  }
+}
+
+/* ===== SELECTION COLOR ===== */
+::selection {
+  background: rgba(37, 99, 235, 0.2);
+  color: #1E3A5F;
+}
