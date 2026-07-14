@@ -1,25 +1,57 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Settings, Cpu, Cog, RotateCcw, Droplets, ArrowRight, Play } from 'lucide-react';
+import { Settings, Cpu, Cog, RotateCcw, Activity, Droplets, ArrowRight, Play, ChevronDown } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
 
 const WorkingPrincipleSection = () => {
   const [key, setKey] = useState(0); // Used to trigger animation replay
+  const [expandedStep, setExpandedStep] = useState<number | null>(null);
 
   const steps = [
-    { name: 'Set Parameters', icon: <Settings size={32} />, image: assetUrl('/img/new_params.jpg') },
-    { name: 'Microcontroller', icon: <Cpu size={32} />, image: assetUrl('/img/infusion_pump_internals.png') },
-    { name: 'Motor Drives', icon: <Cog size={32} />, image: assetUrl('/img/flow_mechanism.png') },
-    { name: 'Rollers Compress', icon: <RotateCcw size={32} />, image: assetUrl('/img/new_rollers.jpg') },
-    { name: 'Fluid to Patient', icon: <Droplets size={32} />, image: assetUrl('/img/new_fluid.jpg') }
+    { 
+      name: 'Set Parameters', 
+      icon: <Settings size={32} />, 
+      image: assetUrl('/img/new_params.jpg'),
+      details: ['Flow rate (mL/h)', 'Volume to be infused (VTBI)', 'Drug library (if available)']
+    },
+    { 
+      name: 'Microcontroller', 
+      icon: <Cpu size={32} />, 
+      image: assetUrl('/img/infusion_pump_internals.png'),
+      details: ['Calculates required motor speed', 'Checks safety limits', 'Initializes sensors']
+    },
+    { 
+      name: 'Motor Driver & Stepper Motor', 
+      icon: <Cog size={32} />, 
+      image: assetUrl('/img/step3_motor.jpg'),
+      details: ['Receives commands from microcontroller', 'Sends pulses to stepper motor', 'Ensures precise movement']
+    },
+    { 
+      name: 'Peristaltic Rollers Compress', 
+      icon: <RotateCcw size={32} />, 
+      image: assetUrl('/img/new_rollers.jpg'),
+      details: ['Rollers sequentially compress tubing', 'Creates controlled forward movement', 'Maintains precise volume']
+    },
+    { 
+      name: 'Sensors Monitor Flow & Safety', 
+      icon: <Activity size={32} />, 
+      image: assetUrl('/img/infusion-pump-maintenance-safety-compliance.png'),
+      details: ['Air-in-line sensor', 'Occlusion (pressure) sensor', 'Door sensor & Battery status']
+    },
+    { 
+      name: 'Fluid Delivered to Patient', 
+      icon: <Droplets size={32} />, 
+      image: assetUrl('/img/new_fluid.jpg'),
+      details: ['Programmed flow rate maintained', 'Stops and alarms if abnormal']
+    }
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.5 }
+      transition: { staggerChildren: 0.2 }
     }
   };
 
@@ -35,65 +67,95 @@ const WorkingPrincipleSection = () => {
 
   const replayAnimation = () => {
     setKey(prev => prev + 1);
+    setExpandedStep(null);
   };
 
   return (
     <SlideWrapper className="bg-section-gradient" id="working-principle">
       <div className="w-full h-full flex flex-col justify-center items-center px-4 py-4 sm:px-8 sm:py-6 lg:px-12 max-w-7xl mx-auto overflow-hidden">
-        <div className="text-center mb-3 sm:mb-6 w-full">
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-4 gap-2">
+        
+        <div className="text-center mb-2 sm:mb-4 w-full">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-2 gap-2">
              <div>
-               <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase block text-left">
+               <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase block text-left mb-1">
                 05
                </span>
-               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 text-left">
+               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 text-left mb-1">
                 Working Principle
                </h2>
+               <p className="text-xs sm:text-sm text-gray-500 text-left font-medium">Click on any step below to see details.</p>
              </div>
              
              <button 
                onClick={replayAnimation}
-               className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-50 hover:bg-medical-blue hover:text-white text-medical-blue rounded-full transition-colors text-xs sm:text-sm font-semibold self-start sm:self-auto"
+               className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-50 hover:bg-medical-blue hover:text-white text-medical-blue rounded-full transition-colors text-xs sm:text-sm font-semibold self-start sm:self-auto shadow-sm"
              >
                <Play size={14} /> Play Animation
              </button>
           </div>
         </div>
 
-        {/* === MOBILE: Vertical numbered list (hidden on sm+) === */}
-        <div className="sm:hidden w-full overflow-y-auto">
+        {/* === MOBILE: Vertical Accordion (hidden on sm+) === */}
+        <div className="sm:hidden w-full overflow-y-auto pb-6 pr-1" style={{ scrollbarWidth: 'none' }}>
           <AnimatePresence mode="wait">
             <motion.div
               key={key}
-              className="flex flex-col gap-3"
+              className="flex flex-col gap-2"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: false, amount: 0.2 }}
+              viewport={{ once: false, amount: 0.1 }}
             >
               {steps.map((step, index) => (
-                <motion.div key={index} variants={itemVariants} className="flex items-center gap-3 glass-card p-3 rounded-2xl">
-                  <div className="w-8 h-8 rounded-full bg-medical-blue text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
-                    {index + 1}
-                  </div>
-                  <div className="w-12 h-12 rounded-xl overflow-hidden bg-white border border-gray-100 flex-shrink-0">
-                    <img src={step.image} alt={step.name} className="w-full h-full object-contain mix-blend-multiply opacity-90" />
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="text-medical-blue">{React.cloneElement(step.icon as React.ReactElement, { size: 18 })}</div>
-                    <span className="text-sm font-bold text-navy-800">{step.name}</span>
-                  </div>
-                </motion.div>
+                <div key={index} className="flex flex-col gap-1">
+                  <motion.div 
+                    variants={itemVariants} 
+                    className={`flex items-center gap-3 glass-card p-3 rounded-2xl cursor-pointer transition-all ${expandedStep === index ? 'ring-1 ring-medical-blue/30 bg-blue-50/10' : ''}`}
+                    onClick={() => setExpandedStep(expandedStep === index ? null : index)}
+                  >
+                    <div className="w-7 h-7 rounded-full bg-medical-blue text-white flex items-center justify-center font-bold text-xs flex-shrink-0">
+                      {index + 1}
+                    </div>
+                    <div className="w-12 h-12 rounded-xl overflow-hidden bg-white border border-gray-100 flex-shrink-0 p-1">
+                      <img src={step.image} alt={step.name} className="w-full h-full object-contain mix-blend-multiply opacity-90" />
+                    </div>
+                    <div className="flex-1 flex items-center gap-2">
+                      <div className="text-medical-blue">{React.cloneElement(step.icon as React.ReactElement, { size: 16 })}</div>
+                      <span className="text-[11px] font-bold text-navy-800 leading-tight">{step.name}</span>
+                    </div>
+                    <ChevronDown size={14} className={`text-gray-400 transition-transform ${expandedStep === index ? 'rotate-180' : ''}`} />
+                  </motion.div>
+                  
+                  <AnimatePresence>
+                    {expandedStep === index && (
+                      <motion.div 
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="ml-12 pl-3 py-2 border-l-2 border-medical-blue/20">
+                          <ul className="list-disc text-[10px] font-semibold text-gray-600 space-y-1.5 pl-2">
+                            {step.details.map((detail, i) => (
+                              <li key={i}>{detail}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
               ))}
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* === DESKTOP: Horizontal flowchart (hidden on mobile) === */}
+        {/* === DESKTOP: Horizontal Scrollable Flowchart (hidden on mobile) === */}
         <AnimatePresence mode="wait">
           <motion.div 
             key={key}
-            className="hidden sm:flex flex-col md:flex-row items-center justify-between w-full gap-4 md:gap-2 lg:gap-6 my-4 lg:my-8"
+            className="hidden sm:flex flex-row items-center w-full gap-2 lg:gap-4 my-2 lg:my-6 overflow-x-auto snap-x snap-mandatory pb-4"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -101,39 +163,57 @@ const WorkingPrincipleSection = () => {
           >
             {steps.map((step, index) => (
               <React.Fragment key={index}>
-                <motion.div variants={itemVariants} className="flex flex-col items-center gap-4 lg:gap-8 group">
-                  <div className="glass-card flex flex-col items-center justify-center p-4 w-36 h-36 lg:w-44 lg:h-44 rounded-3xl text-center relative overflow-hidden group-hover:-translate-y-2 transition-transform duration-300">
-                     <div className="absolute top-0 left-0 w-full h-1.5 bg-medical-blue transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                <motion.div 
+                  variants={itemVariants} 
+                  className="flex flex-col items-center gap-4 group cursor-pointer snap-start flex-shrink-0"
+                  onClick={() => setExpandedStep(expandedStep === index ? null : index)}
+                >
+                  <div className={`glass-card flex flex-col items-center justify-center p-3 w-32 h-32 lg:w-40 lg:h-40 rounded-3xl text-center relative overflow-hidden transition-all duration-300 ${expandedStep === index ? 'ring-2 ring-medical-blue shadow-lg scale-105 bg-white/60' : 'hover:-translate-y-2 hover:bg-white/40'}`}>
+                     <div className={`absolute top-0 left-0 w-full h-1.5 bg-medical-blue transform origin-left transition-transform duration-300 ${expandedStep === index ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></div>
                      
-                     <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-blue-50 text-medical-blue flex items-center justify-center mb-2 lg:mb-4 shadow-inner transform group-hover:scale-110 transition-transform">
-                       {React.cloneElement(step.icon as React.ReactElement, { className: 'w-7 h-7 lg:w-9 lg:h-9' })}
+                     <div className={`w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center mb-2 lg:mb-3 shadow-inner transform transition-all duration-300 ${expandedStep === index ? 'bg-medical-blue text-white scale-110' : 'bg-blue-50 text-medical-blue group-hover:scale-110'}`}>
+                       {React.cloneElement(step.icon as React.ReactElement, { className: 'w-6 h-6 lg:w-8 lg:h-8' })}
                      </div>
                      
-                     <span className="text-xs lg:text-sm font-bold text-navy-800 leading-tight">
+                     <span className="text-[10px] lg:text-xs font-bold text-navy-800 leading-tight px-1">
                        {step.name}
                      </span>
+
+                     <div className="mt-1 lg:mt-2 text-gray-400">
+                        <ChevronDown size={14} className={`transition-transform duration-300 ${expandedStep === index ? 'rotate-180 text-medical-blue' : ''}`} />
+                     </div>
                   </div>
                   
-                  {/* Real Image below the step card */}
-                  <div className="w-36 h-28 lg:w-44 lg:h-32 rounded-2xl overflow-hidden shadow-lg border border-white/60 bg-white/80 group-hover:shadow-xl group-hover:scale-105 transition-all duration-300 flex items-center justify-center p-2">
+                  {/* Real Image & Details Overlay */}
+                  <div className="relative w-32 h-24 lg:w-40 lg:h-32 rounded-2xl overflow-hidden shadow-md border border-white/60 bg-white/80 transition-all duration-300 flex items-center justify-center p-2">
                     <img 
                       src={step.image} 
                       alt={step.name} 
-                      className="w-full h-full object-contain mix-blend-multiply opacity-90 hover:opacity-100 transition-opacity drop-shadow-sm"
+                      className={`w-full h-full object-contain mix-blend-multiply transition-all duration-500 ${expandedStep === index ? 'opacity-10 blur-[2px] scale-110' : 'opacity-90 group-hover:scale-105 drop-shadow-sm'}`}
                     />
+                    
+                    <AnimatePresence>
+                      {expandedStep === index && (
+                        <motion.div 
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 15 }}
+                          className="absolute inset-0 p-3 bg-white/50 backdrop-blur-md flex flex-col justify-center items-start text-left overflow-y-auto"
+                        >
+                          <ul className="list-disc pl-3 text-[9px] lg:text-[11px] text-navy-900 font-bold space-y-1.5 leading-tight">
+                            {step.details.map((detail, i) => (
+                              <li key={i}>{detail}</li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </motion.div>
                 
                 {index < steps.length - 1 && (
-                  <motion.div variants={arrowVariants} className="hidden lg:flex mb-32">
-                    <ArrowRight className="text-gray-300" size={24} />
-                  </motion.div>
-                )}
-                
-                {/* Tablet downward arrow */}
-                {index < steps.length - 1 && (
-                  <motion.div variants={arrowVariants} className="lg:hidden mb-2">
-                    <ArrowRight className="text-gray-300 rotate-90" size={24} />
+                  <motion.div variants={arrowVariants} className="flex flex-shrink-0 mb-[7rem] lg:mb-[9rem]">
+                    <ArrowRight className="text-medical-blue/30" size={24} />
                   </motion.div>
                 )}
               </React.Fragment>
@@ -141,7 +221,6 @@ const WorkingPrincipleSection = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Removed Continuous Precision Panel as requested */}
       </div>
     </SlideWrapper>
   );
