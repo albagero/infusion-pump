@@ -25,27 +25,11 @@ const TypesSection = () => {
       isHighlight: false
     },
     { 
-      name: 'PCA Pump', 
-      icon: <Hand size={28} />, 
-      shortDesc: 'Patient Controlled', 
-      fullDesc: 'Patient Controlled Analgesia allows patients to safely administer their own pain medication within programmed limits.',
-      image: assetUrl('/img/pca_pump.png'),
-      isHighlight: false
-    },
-    { 
       name: 'Insulin Pump', 
       icon: <Pill size={28} />, 
       shortDesc: 'Continuous Delivery', 
       fullDesc: 'Small, wearable devices for continuous subcutaneous insulin delivery in diabetes management.',
       image: assetUrl('/img/insulin_pump.png'),
-      isHighlight: false
-    },
-    { 
-      name: 'Elastomeric Pump', 
-      icon: <Circle size={28} />, 
-      shortDesc: 'Non-electronic', 
-      fullDesc: 'Disposable, portable pumps that use pressure from an elastomeric balloon. No battery needed, often used for home care.',
-      image: assetUrl('/img/images (29).jpeg'),
       isHighlight: false
     }
   ];
@@ -80,7 +64,7 @@ const TypesSection = () => {
 
         {/* Cards Grid */}
         <motion.div 
-          className="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-8 pb-4 snap-x snap-mandatory"
+          className="flex lg:grid lg:grid-cols-3 lg:max-w-3xl lg:mx-auto overflow-x-auto lg:overflow-visible gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-8 pb-4 snap-x snap-mandatory"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           variants={containerVariants}
           initial="hidden"
