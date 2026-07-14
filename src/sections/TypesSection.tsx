@@ -80,7 +80,7 @@ const TypesSection = () => {
 
         {/* Cards Grid */}
         <motion.div 
-          className="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible gap-2 sm:gap-4 lg:gap-6 mb-2 sm:mb-8 pb-2 snap-x snap-mandatory"
+          className="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-8 pb-4 snap-x snap-mandatory"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           variants={containerVariants}
           initial="hidden"
@@ -120,11 +120,11 @@ const TypesSection = () => {
               className="glass-card p-3 sm:p-6 rounded-3xl shadow-2xl border border-white/50 max-w-5xl mx-auto flex flex-col sm:flex-row gap-4 sm:gap-8 items-center"
             >
               {/* Large Image Container */}
-              <div className="w-full sm:w-48 h-24 sm:h-48 flex-shrink-0 rounded-xl sm:rounded-2xl overflow-hidden shadow-inner border border-gray-100 bg-white group flex items-center justify-center">
+              <div className="w-full sm:w-56 h-40 sm:h-56 flex-shrink-0 rounded-2xl overflow-hidden shadow-inner border border-blue-50/50 bg-white/60 group flex items-center justify-center">
                 <img 
                   src={pumpTypes[selectedType].image} 
                   alt={pumpTypes[selectedType].name}
-                  className="w-full h-full object-contain p-2 sm:p-0 transform transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full object-contain p-4 sm:p-2 transform transition-transform duration-700 group-hover:scale-110 drop-shadow-sm"
                 />
               </div>
               
@@ -135,11 +135,11 @@ const TypesSection = () => {
                     {pumpTypes[selectedType].icon}
                   </div>
                   <div>
-                    <h4 className="text-base sm:text-3xl font-bold text-navy-900">{pumpTypes[selectedType].name}</h4>
-                    <span className="text-[10px] sm:text-sm text-medical-blue font-bold uppercase tracking-widest">{pumpTypes[selectedType].shortDesc}</span>
+                    <h4 className="text-lg sm:text-3xl font-bold text-navy-900">{pumpTypes[selectedType].name}</h4>
+                    <span className="text-[11px] sm:text-sm text-medical-blue font-bold uppercase tracking-widest">{pumpTypes[selectedType].shortDesc}</span>
                   </div>
                 </div>
-                <p className="text-xs sm:text-base lg:text-xl text-gray-600 leading-relaxed max-w-2xl mt-1 sm:mt-4">
+                <p className="text-sm sm:text-base lg:text-xl text-gray-600 leading-relaxed max-w-2xl mt-2 sm:mt-4">
                   {pumpTypes[selectedType].fullDesc}
                 </p>
               </div>
