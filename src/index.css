@@ -25,13 +25,13 @@ body {
 
 #root {
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
 /* ===== SCROLL CONTAINER ===== */
 .slide-container {
-  height: 100vh;
+  height: 100dvh;
   overflow-y: auto;
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
@@ -44,7 +44,7 @@ body {
 }
 
 .slide {
-  height: 100vh;
+  height: 100dvh;
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
@@ -256,6 +256,78 @@ body {
   .slide {
     padding: 1rem;
   }
+}
+
+/* ===== PUMP SIMULATOR ===== */
+
+/* Pump device body */
+.pump-device-body {
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+}
+
+/* Screen states */
+.pump-screen-on {
+  background: linear-gradient(180deg, #0a1628 0%, #0c1e38 50%, #0f2240 100%);
+  box-shadow: inset 0 0 30px rgba(6, 182, 212, 0.05), 0 0 15px rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.12);
+}
+
+.pump-screen-off {
+  background: linear-gradient(180deg, #050a12 0%, #080e18 100%);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Hardware button base */
+.pump-hw-button {
+  border: 1px solid;
+  transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 52px;
+}
+
+.pump-hw-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.pump-hw-button:active {
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Running glow */
+.pump-running-glow {
+  box-shadow: 0 0 40px rgba(34, 197, 94, 0.15), 0 0 80px rgba(34, 197, 94, 0.05);
+  animation: runningGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes runningGlow {
+  0% { box-shadow: 0 0 30px rgba(34, 197, 94, 0.1); }
+  100% { box-shadow: 0 0 50px rgba(34, 197, 94, 0.2); }
+}
+
+/* Alarm glow */
+.pump-alarm-glow {
+  animation: alarmGlow 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes alarmGlow {
+  0% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.15); }
+  100% { box-shadow: 0 0 60px rgba(239, 68, 68, 0.35); }
+}
+
+/* Screen internal scroll */
+.pump-screen-scroll {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pump-screen-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 /* ===== SELECTION COLOR ===== */

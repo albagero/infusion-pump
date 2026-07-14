@@ -44,7 +44,7 @@ const FutureSection = () => {
             <span className="text-medical-cyan/70 text-sm font-bold tracking-widest uppercase mb-2 sm:mb-4 block">
               14
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-6xl font-bold text-white mb-6 sm:mb-12 leading-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 lg:mb-10 leading-tight">
               The Future of<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-medical-cyan to-blue-400">Infusion Pumps</span>
             </h2>
@@ -60,7 +60,7 @@ const FutureSection = () => {
                 <motion.div 
                   key={index} 
                   variants={itemVariants}
-                  className="glass-card-dark flex items-center p-3 sm:p-5 rounded-xl border border-white/10 hover:border-medical-cyan/50 transition-colors"
+                  className="glass-card-dark flex items-center p-3 lg:p-4 rounded-xl border border-white/10 hover:border-medical-cyan/50 transition-colors"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-medical-blue/20 text-medical-cyan flex items-center justify-center mr-3 sm:mr-5 shadow-inner flex-shrink-0">
                     {React.cloneElement(trend.icon as React.ReactElement, { className: 'w-5 h-5 sm:w-6 sm:h-6' })}
@@ -82,7 +82,7 @@ const FutureSection = () => {
             transition={{ duration: 1 }}
             viewport={{ once: false, amount: 0.3 }}
           >
-             <div className="relative w-80 h-80">
+             <div className="relative w-64 h-64 lg:w-80 lg:h-80">
                 {/* Orbital rings */}
                 <motion.div 
                   className="absolute inset-0 border border-medical-cyan/30 rounded-full"

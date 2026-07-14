@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { assetUrl } from '../utils/assetUrl';
 
 const HeroSection = () => {
   return (
@@ -68,7 +69,7 @@ const HeroSection = () => {
               transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
             >
               <img 
-                src="/img/infustion-pump.jpg" 
+                src={assetUrl('/img/infustion-pump.jpg')} 
                 alt="Infusion Pump" 
                 className="w-full h-full object-cover opacity-90"
               />
@@ -76,21 +77,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
         
-        {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-2 z-20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-        >
-          <span className="text-xs uppercase tracking-widest">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-          >
-            <ChevronDown size={20} />
-          </motion.div>
-        </motion.div>
       </div>
     </SlideWrapper>
   );

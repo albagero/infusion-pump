@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Settings, Cpu, Cog, RotateCcw, Droplets, ArrowRight, Play } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { assetUrl } from '../utils/assetUrl';
 
 const WorkingPrincipleSection = () => {
   const [key, setKey] = useState(0); // Used to trigger animation replay
 
   const steps = [
-    { name: 'Set Parameters', icon: <Settings size={32} />, image: '/img/new_params.jpg' },
-    { name: 'Microcontroller', icon: <Cpu size={32} />, image: '/img/infusion_pump_internals.png' },
-    { name: 'Motor Drives', icon: <Cog size={32} />, image: '/img/flow_mechanism.png' },
-    { name: 'Rollers Compress', icon: <RotateCcw size={32} />, image: '/img/new_rollers.jpg' },
-    { name: 'Fluid to Patient', icon: <Droplets size={32} />, image: '/img/new_fluid.jpg' }
+    { name: 'Set Parameters', icon: <Settings size={32} />, image: assetUrl('/img/new_params.jpg') },
+    { name: 'Microcontroller', icon: <Cpu size={32} />, image: assetUrl('/img/infusion_pump_internals.png') },
+    { name: 'Motor Drives', icon: <Cog size={32} />, image: assetUrl('/img/flow_mechanism.png') },
+    { name: 'Rollers Compress', icon: <RotateCcw size={32} />, image: assetUrl('/img/new_rollers.jpg') },
+    { name: 'Fluid to Patient', icon: <Droplets size={32} />, image: assetUrl('/img/new_fluid.jpg') }
   ];
 
   const containerVariants = {

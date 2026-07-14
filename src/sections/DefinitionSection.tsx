@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Settings, Activity, ShieldCheck } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { assetUrl } from '../utils/assetUrl';
 
 const DefinitionSection = () => {
   const containerVariants = {
@@ -69,7 +70,7 @@ const DefinitionSection = () => {
              <div className="absolute inset-0 bg-gradient-to-tr from-medical-blue/10 to-transparent rounded-2xl transform translate-x-4 translate-y-4 -z-10"></div>
              <div className="glass-card p-4 overflow-hidden group">
                <img 
-                 src="/img/images (29).jpeg" 
+                 src={assetUrl('/img/images (29).jpeg')} 
                  alt="Infusion Pump Details" 
                  className="w-full h-auto rounded-xl object-cover transform transition-transform duration-700 group-hover:scale-105"
                />

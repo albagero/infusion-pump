@@ -13,14 +13,22 @@ import SafetySection from './sections/SafetySection';
 import EngineeringSection from './sections/EngineeringSection';
 import ResponsibilitiesSection from './sections/ResponsibilitiesSection';
 import SensorsSection from './sections/SensorsSection';
+import SimulatorSection from './sections/SimulatorSection';
 import AdvantagesSection from './sections/AdvantagesSection';
 import ApplicationsSection from './sections/ApplicationsSection';
 import FutureSection from './sections/FutureSection';
 import ThankYouSection from './sections/ThankYouSection';
 
 function App() {
-  const TOTAL_SLIDES = 15;
-  const { currentSlide, progress, goNext, containerRef } = useSlideNavigation(TOTAL_SLIDES);
+  const TOTAL_SLIDES = 16;
+  const { 
+    currentSlide, 
+    totalSlides, 
+    progress, 
+    goNext, 
+    goPrev, 
+    containerRef
+  } = useSlideNavigation(TOTAL_SLIDES);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -31,12 +39,14 @@ function App() {
 
   return (
     <>
-      <Navigation 
-        currentSlide={currentSlide} 
-        totalSlides={TOTAL_SLIDES} 
-        progress={progress} 
-        onNext={goNext} 
-      />
+      {mounted && (
+        <Navigation 
+          currentSlide={currentSlide} 
+          totalSlides={TOTAL_SLIDES} 
+          progress={progress} 
+          onNext={goNext} 
+        />
+      )}
       
       <div 
         ref={containerRef} 
@@ -53,6 +63,7 @@ function App() {
         <EngineeringSection />
         <ResponsibilitiesSection />
         <SensorsSection />
+        <SimulatorSection />
         <AdvantagesSection />
         <ApplicationsSection />
         <FutureSection />

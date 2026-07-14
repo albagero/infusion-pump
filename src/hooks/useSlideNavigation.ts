@@ -14,7 +14,7 @@ export function useSlideNavigation(totalSlides: number) {
 
     const container = containerRef.current;
     if (container) {
-      const slideHeight = window.innerHeight;
+      const slideHeight = container.clientHeight;
       container.scrollTo({
         top: slideHeight * index,
         behavior: 'smooth',
@@ -88,60 +88,78 @@ export function useSlideNavigation(totalSlides: number) {
     return () => container.removeEventListener('wheel', handleWheel);
   }, [goNext, goPrev]);
 
-  // Touch navigation
+  // Touch navigation removed because it conflicts with native CSS scroll-snap,
+  // which handles smooth swiping perfectly on mobile devices.
+
+  // Comprehensive slide detection using every possible method.
+  // Uses setInterval (not rAF which mobile can throttle),
+  // scroll listeners on container + window + document,
+  // and getBoundingClientRect for position detection.
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const detectCurrentSlide = () => {
+      const container = containerRef.current;
+      if (!container) {
+        return;
+      }
 
-    let touchStartY = 0;
-    let touchStartX = 0;
+      // Method 1: getBoundingClientRect - works regardless of scroll context
+      const viewportCenter = window.innerHeight / 2;
+      const children = container.children;
 
-    const handleTouchStart = (e: TouchEvent) => {
-      touchStartY = e.touches[0].clientY;
-      touchStartX = e.touches[0].clientX;
-    };
+      let foundMethod1 = false;
+      for (let i = 0; i < children.length; i++) {
+        const rect = children[i].getBoundingClientRect();
+        if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
+          setCurrentSlide(i);
+          foundMethod1 = true;
+          return;
+        }
+      }
 
-    const handleTouchEnd = (e: TouchEvent) => {
-      const touchEndY = e.changedTouches[0].clientY;
-      const touchEndX = e.changedTouches[0].clientX;
-      const diffY = touchStartY - touchEndY;
-      const diffX = touchStartX - touchEndX;
-
-      // Only trigger if vertical swipe is dominant
-      if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 50) {
-        if (diffY > 0) {
-          goNext();
-        } else {
-          goPrev();
+      if (!foundMethod1) {
+        // Method 2: scrollTop fallback
+        const firstChild = children[0] as HTMLElement;
+        if (firstChild) {
+          const slideHeight = firstChild.offsetHeight || container.clientHeight;
+          if (slideHeight > 0) {
+            // Try container scrollTop
+            let scrollTop = container.scrollTop;
+            let source = 'container';
+            // If container scrollTop is 0, try window/document
+            if (scrollTop === 0 && children.length > 1) {
+              scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+              source = 'window';
+            }
+            if (scrollTop > 0) {
+              const newSlide = Math.round(scrollTop / slideHeight);
+              if (newSlide >= 0 && newSlide < totalSlides) {
+                setCurrentSlide(newSlide);
+                return;
+              }
+            }
+          }
         }
       }
     };
 
-    container.addEventListener('touchstart', handleTouchStart, { passive: true });
-    container.addEventListener('touchend', handleTouchEnd, { passive: true });
+    // Run detection on an interval (immune to rAF throttling)
+    const intervalId = setInterval(detectCurrentSlide, 200);
+
+    // Also attach scroll listeners to every possible scroll target
+    const handleGlobalScroll = () => detectCurrentSlide();
+    
+    window.addEventListener('scroll', handleGlobalScroll, { passive: true });
+    document.addEventListener('scroll', handleGlobalScroll, { passive: true });
+
+    // Run once immediately
+    detectCurrentSlide();
+
     return () => {
-      container.removeEventListener('touchstart', handleTouchStart);
-      container.removeEventListener('touchend', handleTouchEnd);
+      clearInterval(intervalId);
+      window.removeEventListener('scroll', handleGlobalScroll);
+      document.removeEventListener('scroll', handleGlobalScroll);
     };
-  }, [goNext, goPrev]);
-
-  // Scroll-based slide detection
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const handleScroll = () => {
-      const slideHeight = window.innerHeight;
-      const scrollTop = container.scrollTop;
-      const newSlide = Math.round(scrollTop / slideHeight);
-      if (newSlide !== currentSlide && newSlide >= 0 && newSlide < totalSlides) {
-        setCurrentSlide(newSlide);
-      }
-    };
-
-    container.addEventListener('scroll', handleScroll, { passive: true });
-    return () => container.removeEventListener('scroll', handleScroll);
-  }, [currentSlide, totalSlides]);
+  }, [totalSlides]);
 
   // Fullscreen toggle with 'F' key
   useEffect(() => {

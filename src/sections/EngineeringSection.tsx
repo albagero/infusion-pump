@@ -104,13 +104,13 @@ const EngineeringSection = () => {
 
         {/* DESKTOP VIEW (Diagram Card) */}
         <motion.div
-          className="hidden sm:block glass-card rounded-3xl p-4 lg:p-8 w-full border border-white/50 shadow-xl overflow-x-auto"
+          className="hidden sm:flex flex-col items-center glass-card rounded-3xl p-6 lg:p-8 w-full max-w-5xl border border-white/50 shadow-xl"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* === TOP ROW: Power Supply → PCB → Microcontroller → Motor Driver === */}
-          <div className="flex items-center justify-center gap-0 lg:gap-1 flex-nowrap min-w-max mx-auto">
+          {/* Main Core Flow */}
+          <div className="flex items-center justify-center w-full flex-wrap gap-2 lg:gap-4 mb-8">
             <Block title="Power Supply" subtitle="12V DC" />
             <HArrow />
             <Block title="PCB" subtitle="Circuit Board" />
@@ -122,56 +122,38 @@ const EngineeringSection = () => {
             />
             <HArrow />
             <Block title="Motor Driver" subtitle="H-Bridge" />
+            <HArrow />
+            <Block title="Stepper Motor" subtitle="NEMA 17" />
           </div>
 
-          {/* === CONNECTORS ROW === */}
-          <div className="flex items-start justify-center gap-0 lg:gap-1 mt-0 min-w-max mx-auto">
-            {/* Spacers for Power Supply and PCB */}
-            <div className="flex-1 min-w-[80px] lg:min-w-[120px]" />
-            <div className="w-5 lg:w-10" />
-            <div className="flex-1 min-w-[80px] lg:min-w-[120px]" />
-            <div className="w-5 lg:w-10" />
-            {/* Connector under Microcontroller */}
-            <div className="min-w-[80px] lg:min-w-[120px] flex justify-center">
-              <VLine />
-            </div>
-            <div className="w-5 lg:w-10" />
-            {/* Connector under Motor Driver */}
-            <div className="min-w-[80px] lg:min-w-[120px] flex justify-center">
-              <VLine />
-            </div>
-          </div>
-
-          {/* === BOTTOM ROW === */}
-          <div className="flex items-start justify-center gap-0 lg:gap-1 min-w-max mx-auto pb-4">
-            {/* Spacers */}
-            <div className="flex-1 min-w-[80px] lg:min-w-[120px]" />
-            <div className="w-5 lg:w-10" />
-            <div className="flex-1 min-w-[80px] lg:min-w-[120px]" />
-            <div className="w-5 lg:w-10" />
-
-            {/* Microcontroller peripherals (below it) */}
-            <div className="min-w-[80px] lg:min-w-[120px] flex flex-col items-center gap-2 lg:gap-3">
-              <Block title="Display" subtitle="LCD / OLED" color="bg-blue-50 text-blue-800 border border-blue-200" />
-              <Block title="Sensors" subtitle="Pressure, Flow, Air" color="bg-blue-50 text-blue-800 border border-blue-200" />
-              <Block title="Alarm System" subtitle="Buzzer + LED" color="bg-red-50 text-red-700 border border-red-200" />
+          <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-8 lg:gap-16">
+            {/* Peripherals (Sensory & UI) */}
+            <div className="flex flex-col items-center">
+              <h4 className="text-[10px] lg:text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Control & Monitoring</h4>
+              <div className="flex items-center gap-2 lg:gap-4">
+                <Block title="Display" subtitle="LCD / OLED" color="bg-blue-50 text-blue-800 border border-blue-200" />
+                <Block title="Sensors" subtitle="Pressure, Flow, Air" color="bg-blue-50 text-blue-800 border border-blue-200" />
+                <Block title="Alarm System" subtitle="Buzzer + LED" color="bg-red-50 text-red-700 border border-red-200" />
+              </div>
             </div>
 
-            <div className="w-5 lg:w-10" />
+            {/* Divider */}
+            <div className="hidden lg:block w-px h-24 bg-gradient-to-b from-transparent via-gray-300 to-transparent" />
 
-            {/* Motor Driver chain */}
-            <div className="flex items-center gap-0 lg:gap-1 flex-nowrap">
-              <Block title="Stepper Motor" subtitle="NEMA 17" />
-              <HArrow />
-              <Block title="Rollers" subtitle="Peristaltic" />
-              <HArrow />
-              <Block title="IV Tube" subtitle="Silicone" />
-              <HArrow />
-              <Block
-                title="Patient"
-                subtitle="Drug Delivery"
-                color="bg-emerald-500 text-white border-none shadow-lg shadow-emerald-400/40"
-              />
+            {/* Output (Delivery) */}
+            <div className="flex flex-col items-center mt-4 lg:mt-0">
+              <h4 className="text-[10px] lg:text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Fluid Delivery Mechanism</h4>
+              <div className="flex items-center gap-2 lg:gap-4">
+                <Block title="Rollers" subtitle="Peristaltic" />
+                <HArrow />
+                <Block title="IV Tube" subtitle="Silicone" />
+                <HArrow />
+                <Block
+                  title="Patient"
+                  subtitle="Drug Delivery"
+                  color="bg-emerald-500 text-white border-none shadow-lg shadow-emerald-400/40"
+                />
+              </div>
             </div>
           </div>
         </motion.div>

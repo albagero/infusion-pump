@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { RotateCcw, ArrowDownToLine, ArrowRight, CheckCircle } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { assetUrl } from '../utils/assetUrl';
 
 const FlowMechanismSection = () => {
   const containerVariants = {
@@ -84,7 +85,7 @@ const FlowMechanismSection = () => {
           >
             <div className="glass-card p-4 rounded-3xl shadow-xl border border-white/50 transform rotate-2 hover:rotate-0 transition-transform duration-500">
               <img 
-                src="/img/flow_mechanism.png" 
+                src={assetUrl('/img/flow_mechanism.png')} 
                 alt="IV Pump Mechanism" 
                 className="w-full h-auto rounded-2xl shadow-inner"
               />

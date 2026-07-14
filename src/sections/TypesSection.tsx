@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Beaker, Syringe, Hand, Pill, Circle } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { assetUrl } from '../utils/assetUrl';
 
 const TypesSection = () => {
   const [selectedType, setSelectedType] = useState(0);
@@ -12,7 +13,7 @@ const TypesSection = () => {
       icon: <Beaker size={28} />, 
       shortDesc: 'Most Common', 
       fullDesc: 'Used for controlled delivery of large volumes of fluids over a specific period. Standard in general wards.',
-      image: '/img/volumetric_pump.png',
+      image: assetUrl('/img/volumetric_pump.png'),
       isHighlight: true
     },
     { 
@@ -20,7 +21,7 @@ const TypesSection = () => {
       icon: <Syringe size={28} />, 
       shortDesc: 'High Precision', 
       fullDesc: 'Uses a motor-driven syringe plunger. Extremely accurate flow rates, ideal for ICU and neonatal care.',
-      image: '/img/syringe_pump.png',
+      image: assetUrl('/img/syringe_pump.png'),
       isHighlight: false
     },
     { 
@@ -28,7 +29,7 @@ const TypesSection = () => {
       icon: <Hand size={28} />, 
       shortDesc: 'Patient Controlled', 
       fullDesc: 'Patient Controlled Analgesia allows patients to safely administer their own pain medication within programmed limits.',
-      image: '/img/pca_pump.png',
+      image: assetUrl('/img/pca_pump.png'),
       isHighlight: false
     },
     { 
@@ -36,7 +37,7 @@ const TypesSection = () => {
       icon: <Pill size={28} />, 
       shortDesc: 'Continuous Delivery', 
       fullDesc: 'Small, wearable devices for continuous subcutaneous insulin delivery in diabetes management.',
-      image: '/img/insulin_pump.png',
+      image: assetUrl('/img/insulin_pump.png'),
       isHighlight: false
     },
     { 
@@ -44,7 +45,7 @@ const TypesSection = () => {
       icon: <Circle size={28} />, 
       shortDesc: 'Non-electronic', 
       fullDesc: 'Disposable, portable pumps that use pressure from an elastomeric balloon. No battery needed, often used for home care.',
-      image: '/img/images (29).jpeg',
+      image: assetUrl('/img/images (29).jpeg'),
       isHighlight: false
     }
   ];

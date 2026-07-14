@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AlertTriangle, Info, Wrench, CheckCircle2, Ban, Wind, BatteryWarning, DoorOpen } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { assetUrl } from '../utils/assetUrl';
 
 const PumpAlarmVisualizer = ({ type }: { type: string }) => {
   const getOverlay = () => {
@@ -60,7 +61,7 @@ const PumpAlarmVisualizer = ({ type }: { type: string }) => {
   return (
     <div className="relative w-full h-full bg-navy-900 rounded-xl overflow-hidden shadow-inner">
       {/* Base Pump Image */}
-      <img src="/img/iv-pump-5442523.jpg" alt="Infusion Pump" className="w-full h-full object-cover opacity-80" />
+      <img src={assetUrl('/img/iv-pump-5442523.jpg')} alt="Infusion Pump" className="w-full h-full object-cover opacity-80" />
       {/* Alarm Overlay */}
       {getOverlay()}
     </div>

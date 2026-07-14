@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { HeartPulse, Baby, Microscope, Stethoscope } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { assetUrl } from '../utils/assetUrl';
 
 const ApplicationsSection = () => {
   const containerVariants = {
@@ -48,10 +49,10 @@ const ApplicationsSection = () => {
     <SlideWrapper className="bg-section-gradient" id="applications">
       <div className="w-full h-full flex flex-col justify-center px-4 py-4 sm:px-8 sm:py-6 lg:px-20 max-w-7xl mx-auto overflow-hidden">
         
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-4 lg:gap-12 items-center">
           {/* Left Content */}
           <div>
-            <div className="mb-6 sm:mb-12">
+            <div className="mb-4 sm:mb-6 lg:mb-8">
               <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">
                 13
               </span>
@@ -64,14 +65,14 @@ const ApplicationsSection = () => {
             </div>
 
             <motion.div 
-              className="space-y-3 sm:space-y-6"
+              className="space-y-3 sm:space-y-4"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: false, amount: 0.1 }}
             >
               {applications.map((app, index) => (
-                <motion.div key={index} variants={itemVariants} className="glass-card flex items-center p-3 sm:p-6 rounded-2xl relative overflow-hidden group hover:-translate-y-1 transition-transform cursor-default">
+                <motion.div key={index} variants={itemVariants} className="glass-card flex items-center p-3 sm:p-4 rounded-2xl relative overflow-hidden group hover:-translate-y-1 transition-transform cursor-default">
                   <div className={`absolute left-0 top-0 bottom-0 w-1 sm:w-1.5 ${app.color.split(' ')[2]}`}></div>
                   
                   <div className={`w-10 h-10 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mr-3 sm:mr-6 ${app.color.split(' ')[0]} ${app.color.split(' ')[1]}`}>
@@ -89,7 +90,7 @@ const ApplicationsSection = () => {
 
           {/* Right Content */}
           <motion.div 
-            className="hidden lg:block relative h-[600px] rounded-3xl overflow-hidden shadow-2xl"
+            className="hidden lg:block relative h-[450px] rounded-3xl overflow-hidden shadow-2xl"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -98,7 +99,7 @@ const ApplicationsSection = () => {
             <div className="absolute inset-0 bg-medical-blue/10 mix-blend-multiply z-10"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent z-20"></div>
             <img 
-              src="/img/in_the_hospital_iv_pole_infusion_and_fluids_bags_cardiovascular.jpg" 
+              src={assetUrl('/img/in_the_hospital_iv_pole_infusion_and_fluids_bags_cardiovascular.jpg')} 
               alt="Hospital Applications" 
               className="w-full h-full object-cover"
             />
