@@ -85,7 +85,7 @@ const SensorsSection = () => {
         {/* Header */}
         <div className="text-center mb-3 sm:mb-5 flex-shrink-0">
           <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 block">
-            11
+            06
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-1 sm:mb-2">
             Sensors in Infusion Pump

@@ -62,12 +62,12 @@ function App() {
         <WhyNeededSection />
         <ComponentsSection />
         <WorkingPrincipleSection />
+        <SensorsSection />
         <FlowMechanismSection />
         <TypesSection />
         <SafetySection />
         <EngineeringSection />
         <ResponsibilitiesSection />
-        <SensorsSection />
         <EnvironmentalFactorsSection />
         <FluidColorSection />
         <PumpHeightSection />

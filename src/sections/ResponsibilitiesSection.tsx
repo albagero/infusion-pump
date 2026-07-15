@@ -31,8 +31,8 @@ const ResponsibilitiesSection = () => {
     <SlideWrapper className="bg-section-gradient" id="responsibilities">
       <div className="w-full h-full flex flex-col justify-center px-4 py-4 sm:px-8 sm:py-6 lg:px-20 max-w-6xl mx-auto overflow-hidden">
         <div className="text-center mb-6 sm:mb-10 lg:mb-16">
-          <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">
-            10
+          <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 block">
+            11
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-2 sm:mb-4">
             Core Responsibilities

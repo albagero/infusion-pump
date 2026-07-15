@@ -33,7 +33,7 @@ const FlowMechanismSection = () => {
           {/* Left Content - Vertical Flow */}
           <div>
             <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">
-              06
+              07
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-3 sm:mb-12">
               Flow Mechanism
