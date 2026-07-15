@@ -40,8 +40,8 @@ const EnvironmentalFactorsSection = () => {
 
   return (
     <SlideWrapper className="bg-section-gradient" id="environmental-factors">
-      <div className="w-full h-full flex flex-col justify-center px-4 py-4 sm:px-8 sm:py-6 lg:px-20 max-w-7xl mx-auto overflow-hidden">
-        <div className="text-center mb-4 sm:mb-12 flex-shrink-0">
+      <div className="w-full h-full flex flex-col justify-start px-4 py-6 sm:px-8 sm:py-8 lg:px-20 max-w-7xl mx-auto overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
+        <div className="text-center mb-6 sm:mb-12 flex-shrink-0 mt-2 sm:mt-0">
           <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">
             12
           </span>
@@ -57,7 +57,7 @@ const EnvironmentalFactorsSection = () => {
         </div>
 
         <motion.div 
-          className="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-visible gap-4 lg:gap-6 mb-4 sm:mb-8 pb-4 snap-x snap-mandatory"
+          className="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-visible gap-4 lg:gap-6 pb-6 pt-2 snap-x snap-mandatory flex-shrink-0"
           style={{ scrollbarWidth: 'none' }}
           variants={containerVariants}
           initial="hidden"
@@ -68,21 +68,21 @@ const EnvironmentalFactorsSection = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden flex flex-col items-center text-center group transition-all duration-300 hover:shadow-xl hover:-translate-y-1 flex-shrink-0 w-[85vw] sm:w-[60vw] lg:w-auto snap-center"
+              className="glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden flex flex-col items-center text-center group transition-all duration-300 hover:shadow-xl flex-shrink-0 w-[85vw] sm:w-[60vw] lg:w-auto snap-center"
             >
               <div className={`absolute top-0 inset-x-0 h-2 bg-gradient-to-r ${factor.color}`}></div>
               
-              <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${factor.color} flex items-center justify-center mb-3 sm:mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${factor.color} flex items-center justify-center mb-4 shadow-lg group-hover:scale-105 transition-transform duration-300`}>
                 {factor.icon}
               </div>
 
               <h4 className="text-lg sm:text-xl font-bold text-navy-900 mb-2 sm:mb-3">{factor.name}</h4>
-              <p className="text-gray-600 font-medium text-xs sm:text-sm">{factor.desc}</p>
+              <p className="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed">{factor.desc}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        <div className="text-center mt-auto flex-shrink-0">
+        <div className="text-center mt-6 sm:mt-auto mb-4 sm:mb-0 flex-shrink-0">
           <p className="text-gray-400 text-xs sm:text-sm italic animate-pulse">
             Swipe through the next slides to explore each factor in detail &rarr;
           </p>
