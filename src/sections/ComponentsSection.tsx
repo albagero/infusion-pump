@@ -36,7 +36,7 @@ const ComponentsSection = () => {
           {/* Left Content */}
           <div>
             <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">
-              04
+              05
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-2 sm:mb-4 lg:mb-6">
               Internal Components

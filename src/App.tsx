@@ -60,11 +60,11 @@ function App() {
         <HeroSection />
         <DefinitionSection />
         <WhyNeededSection />
+        <TypesSection />
         <ComponentsSection />
         <WorkingPrincipleSection />
         <SensorsSection />
         <FlowMechanismSection />
-        <TypesSection />
         <SafetySection />
         <EngineeringSection />
         <ResponsibilitiesSection />
