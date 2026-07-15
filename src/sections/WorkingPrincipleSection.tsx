@@ -36,7 +36,7 @@ const WorkingPrincipleSection = () => {
     { 
       name: 'Sensors Monitor Flow & Safety', 
       icon: <Activity size={32} />, 
-      image: assetUrl('/img/infusion-pump-maintenance-safety-compliance.png'),
+      image: assetUrl('/img/pump_sensors.png'),
       details: ['Air-in-line sensor', 'Occlusion (pressure) sensor', 'Door sensor & Battery status']
     },
     { 
