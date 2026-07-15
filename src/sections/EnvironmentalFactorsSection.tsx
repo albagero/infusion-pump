@@ -7,19 +7,22 @@ const EnvironmentalFactorsSection = () => {
   const factors = [
     {
       name: 'Fluid Color & Opacity',
-      icon: <Palette size={32} className="text-white" />,
+      icon: <Palette size={24} className="text-white" />,
+      iconLg: <Palette size={32} className="text-white" />,
       desc: 'Dark or opaque fluids can affect optical sensor accuracy',
       color: 'from-amber-400 to-amber-600',
     },
     {
-      name: 'Pump Height (Hydrostatic Pressure)',
-      icon: <ArrowUpDown size={32} className="text-white" />,
+      name: 'Pump Height',
+      icon: <ArrowUpDown size={24} className="text-white" />,
+      iconLg: <ArrowUpDown size={32} className="text-white" />,
       desc: 'IV bag height creates hydrostatic pressure affecting flow',
       color: 'from-blue-400 to-blue-600',
     },
     {
-      name: 'Altitude & Atmospheric Pressure',
-      icon: <Mountain size={32} className="text-white" />,
+      name: 'Altitude & Pressure',
+      icon: <Mountain size={24} className="text-white" />,
+      iconLg: <Mountain size={32} className="text-white" />,
       desc: 'Lower atmospheric pressure causes gas expansion in tubing',
       color: 'from-purple-400 to-purple-600',
     }
@@ -29,36 +32,33 @@ const EnvironmentalFactorsSection = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2 }
+      transition: { staggerChildren: 0.15 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
   };
 
   return (
     <SlideWrapper className="bg-section-gradient" id="environmental-factors">
-      <div className="w-full h-full flex flex-col justify-start px-4 py-6 sm:px-8 sm:py-8 lg:px-20 max-w-7xl mx-auto overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
-        <div className="text-center mb-6 sm:mb-12 flex-shrink-0 mt-2 sm:mt-0">
-          <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">
+      <div className="w-full h-full flex flex-col justify-center px-4 py-4 sm:px-8 sm:py-8 lg:px-20 max-w-7xl mx-auto">
+        <div className="text-center mb-4 sm:mb-10 flex-shrink-0">
+          <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 block">
             12
           </span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-2 sm:mb-4">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-1 sm:mb-4">
             Engineering Challenges
           </h2>
-          <h3 className="text-sm sm:text-xl text-medical-blue font-semibold mb-2 sm:mb-4">
-            Environmental & Physical Factors Affecting Infusion Pump Performance
+          <h3 className="text-xs sm:text-xl text-medical-blue font-semibold">
+            Environmental & Physical Factors
           </h3>
-          <p className="text-xs sm:text-base text-gray-600 max-w-3xl mx-auto hidden sm:block">
-            Modern infusion pumps are designed to deliver fluids with high accuracy. However, several environmental and physical factors can influence their performance.
-          </p>
         </div>
 
+        {/* Mobile: Vertical compact cards | Desktop: 3-col grid */}
         <motion.div 
-          className="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-visible gap-4 lg:gap-6 pb-6 pt-2 snap-x snap-mandatory flex-shrink-0"
-          style={{ scrollbarWidth: 'none' }}
+          className="flex flex-col sm:grid sm:grid-cols-3 gap-3 sm:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -68,21 +68,27 @@ const EnvironmentalFactorsSection = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="glass-card rounded-2xl p-5 sm:p-6 relative overflow-hidden flex flex-col items-center text-center group transition-all duration-300 hover:shadow-xl flex-shrink-0 w-[85vw] sm:w-[60vw] lg:w-auto snap-center"
+              className="glass-card rounded-2xl relative overflow-hidden group transition-all duration-300 hover:shadow-xl
+                flex flex-row items-center gap-4 p-4
+                sm:flex-col sm:items-center sm:text-center sm:p-6"
             >
-              <div className={`absolute top-0 inset-x-0 h-2 bg-gradient-to-r ${factor.color}`}></div>
+              <div className={`absolute top-0 inset-x-0 h-1.5 sm:h-2 bg-gradient-to-r ${factor.color}`}></div>
               
-              <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${factor.color} flex items-center justify-center mb-4 shadow-lg group-hover:scale-105 transition-transform duration-300`}>
-                {factor.icon}
+              {/* Mobile: small circle | Desktop: larger */}
+              <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br ${factor.color} flex items-center justify-center shadow-lg flex-shrink-0 group-hover:scale-105 transition-transform duration-300`}>
+                <span className="sm:hidden">{factor.icon}</span>
+                <span className="hidden sm:block">{factor.iconLg}</span>
               </div>
 
-              <h4 className="text-lg sm:text-xl font-bold text-navy-900 mb-2 sm:mb-3">{factor.name}</h4>
-              <p className="text-gray-600 font-medium text-xs sm:text-sm leading-relaxed">{factor.desc}</p>
+              <div className="flex-1 sm:flex-initial">
+                <h4 className="text-base sm:text-xl font-bold text-navy-900 mb-0.5 sm:mb-3">{factor.name}</h4>
+                <p className="text-gray-600 font-medium text-xs sm:text-sm leading-snug">{factor.desc}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>
 
-        <div className="text-center mt-6 sm:mt-auto mb-4 sm:mb-0 flex-shrink-0">
+        <div className="text-center mt-4 sm:mt-8 flex-shrink-0">
           <p className="text-gray-400 text-xs sm:text-sm italic animate-pulse">
             Swipe through the next slides to explore each factor in detail &rarr;
           </p>
