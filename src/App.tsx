@@ -13,6 +13,10 @@ import SafetySection from './sections/SafetySection';
 import EngineeringSection from './sections/EngineeringSection';
 import ResponsibilitiesSection from './sections/ResponsibilitiesSection';
 import SensorsSection from './sections/SensorsSection';
+import EnvironmentalFactorsSection from './sections/EnvironmentalFactorsSection';
+import FluidColorSection from './sections/FluidColorSection';
+import PumpHeightSection from './sections/PumpHeightSection';
+import AltitudeSection from './sections/AltitudeSection';
 import SimulatorSection from './sections/SimulatorSection';
 import AdvantagesSection from './sections/AdvantagesSection';
 import ApplicationsSection from './sections/ApplicationsSection';
@@ -20,7 +24,7 @@ import FutureSection from './sections/FutureSection';
 import ThankYouSection from './sections/ThankYouSection';
 
 function App() {
-  const TOTAL_SLIDES = 16;
+  const TOTAL_SLIDES = 20;
   const { 
     currentSlide, 
     totalSlides, 
@@ -63,6 +67,10 @@ function App() {
         <EngineeringSection />
         <ResponsibilitiesSection />
         <SensorsSection />
+        <EnvironmentalFactorsSection />
+        <FluidColorSection />
+        <PumpHeightSection />
+        <AltitudeSection />
         <SimulatorSection />
         <AdvantagesSection />
         <ApplicationsSection />
