@@ -96,7 +96,7 @@ const SensorsSection = () => {
         {/* === MOBILE: Compact scrollable list === */}
         <div className="sm:hidden flex-1 overflow-y-auto pb-4" style={{ scrollbarWidth: 'none' }}>
           <motion.div 
-            className="flex flex-col gap-2"
+            className="flex flex-col gap-3"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
@@ -107,28 +107,28 @@ const SensorsSection = () => {
                 key={index}
                 variants={itemVariants}
                 onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
-                className={`glass-card rounded-2xl p-2.5 relative overflow-hidden cursor-pointer transition-all duration-300 ${expandedIndex === index ? 'ring-1 ring-medical-blue/30 shadow-lg' : ''}`}
+                className={`glass-card rounded-2xl p-3 relative overflow-hidden cursor-pointer transition-all duration-300 ${expandedIndex === index ? 'ring-1 ring-medical-blue/30 shadow-lg' : ''}`}
               >
-                <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${sensor.color}`}></div>
+                <div className={`absolute top-0 inset-x-0 h-1.5 bg-gradient-to-r ${sensor.color}`}></div>
                 
                 <div className="flex items-center gap-3">
                   {/* Image thumbnail */}
-                  <div className="w-14 h-14 rounded-xl overflow-hidden bg-white border border-gray-100 flex-shrink-0 shadow-sm">
+                  <div className="w-20 h-20 rounded-xl overflow-hidden bg-white border border-gray-100 flex-shrink-0 shadow-sm">
                     <img src={sensor.image} alt={sensor.name} className="w-full h-full object-cover" />
                   </div>
                   
                   {/* Icon + text */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <div className={`w-6 h-6 rounded-full bg-gradient-to-br ${sensor.color} flex items-center justify-center flex-shrink-0`}>
-                        {React.cloneElement(sensor.icon as React.ReactElement, { className: 'w-3 h-3 text-white' })}
+                    <div className="flex items-center gap-2 mb-1">
+                      <div className={`w-7 h-7 rounded-full bg-gradient-to-br ${sensor.color} flex items-center justify-center flex-shrink-0`}>
+                        {React.cloneElement(sensor.icon as React.ReactElement, { className: 'w-3.5 h-3.5 text-white' })}
                       </div>
-                      <h3 className="text-[11px] font-bold text-navy-900 leading-tight truncate">{sensor.name}</h3>
+                      <h3 className="text-sm font-bold text-navy-900 leading-tight">{sensor.name}</h3>
                     </div>
-                    <p className="text-[9px] text-gray-500 font-medium leading-snug line-clamp-2">{sensor.desc}</p>
+                    <p className="text-[11px] text-gray-500 font-medium leading-snug line-clamp-2">{sensor.desc}</p>
                   </div>
                   
-                  <ChevronDown size={14} className={`text-gray-400 flex-shrink-0 transition-transform duration-300 ${expandedIndex === index ? 'rotate-180' : ''}`} />
+                  <ChevronDown size={16} className={`text-gray-400 flex-shrink-0 transition-transform duration-300 ${expandedIndex === index ? 'rotate-180' : ''}`} />
                 </div>
 
                 {/* Expandable failure effect */}
@@ -140,11 +140,11 @@ const SensorsSection = () => {
                       exit={{ opacity: 0, height: 0 }}
                       className="overflow-hidden"
                     >
-                      <div className={`mt-2 p-2 rounded-lg ${sensor.bgAccent} border flex items-center gap-2`}>
-                        <AlertTriangle size={12} className="text-red-500 flex-shrink-0" />
+                      <div className={`mt-3 p-3 rounded-xl ${sensor.bgAccent} border flex items-center gap-3`}>
+                        <AlertTriangle size={16} className="text-red-500 flex-shrink-0" />
                         <div>
-                          <span className="text-[9px] font-bold text-red-600 block">If sensor fails:</span>
-                          <span className="text-[9px] font-semibold text-red-700">{sensor.failure}</span>
+                          <span className="text-[11px] font-bold text-red-600 block">If sensor fails:</span>
+                          <span className="text-[11px] font-semibold text-red-700">{sensor.failure}</span>
                         </div>
                       </div>
                     </motion.div>
