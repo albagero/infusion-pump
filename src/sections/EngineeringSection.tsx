@@ -58,7 +58,7 @@ const EngineeringSection = () => {
       <div className="w-full h-full flex flex-col justify-center items-center px-4 py-4 sm:px-6 lg:px-12 max-w-7xl mx-auto overflow-hidden">
         {/* Title */}
         <div className="text-center mb-4 sm:mb-6 w-full">
-          <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">10</span>
+          <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">09</span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900">System Architecture</h2>
         </div>
 

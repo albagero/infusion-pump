@@ -65,8 +65,8 @@ function App() {
         <WorkingPrincipleSection />
         <SensorsSection />
         <FlowMechanismSection />
-        <SafetySection />
         <EngineeringSection />
+        <SafetySection />
         <ResponsibilitiesSection />
         <EnvironmentalFactorsSection />
         <FluidColorSection />

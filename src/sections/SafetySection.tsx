@@ -110,7 +110,7 @@ const SafetySection = () => {
       <div className="w-full h-full flex flex-col justify-center px-4 py-4 sm:px-8 sm:py-6 lg:px-20 max-w-5xl mx-auto overflow-hidden">
         <div className="text-center mb-4 sm:mb-6">
           <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 block">
-            09
+            10
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900">
             Safety Features
