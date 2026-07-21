@@ -19,6 +19,7 @@ import FluidColorSection from './sections/FluidColorSection';
 import PumpHeightSection from './sections/PumpHeightSection';
 import AltitudeSection from './sections/AltitudeSection';
 import MaintenanceChecklistSection from './sections/MaintenanceChecklistSection';
+import OperationVideoSection from './sections/OperationVideoSection';
 import SimulatorSection from './sections/SimulatorSection';
 import AdvantagesSection from './sections/AdvantagesSection';
 import ApplicationsSection from './sections/ApplicationsSection';
@@ -26,7 +27,7 @@ import FutureSection from './sections/FutureSection';
 import ThankYouSection from './sections/ThankYouSection';
 
 function App() {
-  const TOTAL_SLIDES = 22;
+  const TOTAL_SLIDES = 23;
   const { 
     currentSlide, 
     totalSlides, 
@@ -75,6 +76,7 @@ function App() {
         <PumpHeightSection />
         <AltitudeSection />
         <MaintenanceChecklistSection />
+        <OperationVideoSection />
         <SimulatorSection />
         <AdvantagesSection />
         <ApplicationsSection />
