@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import { useSlideNavigation } from './hooks/useSlideNavigation';
 
 import HeroSection from './sections/HeroSection';
+import WhatIsPumpSection from './sections/WhatIsPumpSection';
 import DefinitionSection from './sections/DefinitionSection';
 import WhyNeededSection from './sections/WhyNeededSection';
 import ComponentsSection from './sections/ComponentsSection';
@@ -25,7 +26,7 @@ import FutureSection from './sections/FutureSection';
 import ThankYouSection from './sections/ThankYouSection';
 
 function App() {
-  const TOTAL_SLIDES = 21;
+  const TOTAL_SLIDES = 22;
   const { 
     currentSlide, 
     totalSlides, 
@@ -58,6 +59,7 @@ function App() {
         className="slide-container"
       >
         <HeroSection />
+        <WhatIsPumpSection />
         <DefinitionSection />
         <WhyNeededSection />
         <TypesSection />
