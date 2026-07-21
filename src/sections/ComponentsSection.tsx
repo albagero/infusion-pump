@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Monitor, Keyboard, Cog, CircuitBoard, Radio, Battery, Cpu } from 'lucide-react';
+import { Monitor, Keyboard, Cog, CircuitBoard, Radio, Battery, Cpu, Zap } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
 
@@ -21,11 +21,12 @@ const ComponentsSection = () => {
   const componentsList = [
     { name: 'Display Screen', icon: <Monitor size={20} className="text-medical-blue" /> },
     { name: 'Control Panel', icon: <Keyboard size={20} className="text-medical-blue" /> },
+    { name: 'Microcontroller', icon: <Cpu size={20} className="text-medical-blue" /> },
+    { name: 'Motor Driver', icon: <Zap size={20} className="text-medical-blue" /> },
     { name: 'Stepper Motor', icon: <Cog size={20} className="text-medical-blue" /> },
-    { name: 'Pump Mechanism', icon: <CircuitBoard size={20} className="text-medical-blue" /> },
-    { name: 'Sensors', icon: <Radio size={20} className="text-medical-blue" /> },
-    { name: 'Battery', icon: <Battery size={20} className="text-medical-blue" /> },
-    { name: 'Microcontroller', icon: <Cpu size={20} className="text-medical-blue" /> }
+    { name: 'Peristaltic Pump Mechanism', icon: <CircuitBoard size={20} className="text-medical-blue" /> },
+    { name: 'Sensors (Pressure, Air-in-Line, Door)', icon: <Radio size={20} className="text-medical-blue" /> },
+    { name: 'Battery', icon: <Battery size={20} className="text-medical-blue" /> }
   ];
 
   return (
