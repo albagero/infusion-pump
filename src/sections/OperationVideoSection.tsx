@@ -49,7 +49,7 @@ const OperationVideoSection = () => {
              </motion.p>
           </div>
 
-          <motion.div variants={itemVariants} className="relative w-full max-w-4xl mx-auto h-[45vh] sm:h-[60vh]">
+          <motion.div variants={itemVariants} className="relative w-full max-w-4xl mx-auto h-[65vh] sm:h-[70vh]">
              <div className="absolute inset-0 bg-gradient-to-tr from-medical-blue/20 to-transparent rounded-2xl transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 -z-10"></div>
              
              {/* Video Container */}

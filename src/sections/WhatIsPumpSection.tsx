@@ -34,13 +34,13 @@ const WhatIsPumpSection = () => {
              </motion.h2>
           </div>
 
-          <motion.div variants={itemVariants} className="relative w-full max-w-4xl mx-auto h-[50vh] sm:h-[60vh]">
+          <motion.div variants={itemVariants} className="relative w-full max-w-4xl mx-auto h-[65vh] sm:h-[70vh]">
              <div className="absolute inset-0 bg-gradient-to-tr from-medical-blue/20 to-transparent rounded-2xl transform translate-x-3 translate-y-3 sm:translate-x-4 sm:translate-y-4 -z-10"></div>
-             <div className="glass-card p-2 sm:p-4 overflow-hidden rounded-2xl h-full shadow-2xl bg-white/70 backdrop-blur-md">
+             <div className="glass-card p-0 sm:p-4 overflow-hidden rounded-2xl h-full shadow-2xl bg-white/70 backdrop-blur-md flex items-center justify-center">
                <img 
                  src={assetUrl('/gif/introp-infusion-pump.gif')} 
                  alt="Infusion Pump Introduction Animation" 
-                 className="w-full h-full rounded-xl object-contain bg-black/5"
+                 className="w-full h-full sm:rounded-xl object-contain bg-black/5"
                />
              </div>
           </motion.div>
