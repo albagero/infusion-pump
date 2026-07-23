@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { Target, Settings, Activity, ShieldCheck } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const DefinitionSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -19,10 +21,10 @@ const DefinitionSection = () => {
   };
 
   const features = [
-    { icon: <Target size={24} className="text-medical-blue" />, label: 'Precise Delivery' },
-    { icon: <Settings size={24} className="text-medical-blue" />, label: 'Programmable Flow Rate' },
-    { icon: <Activity size={24} className="text-medical-blue" />, label: 'Continuous Monitoring' },
-    { icon: <ShieldCheck size={24} className="text-medical-blue" />, label: 'Patient Safety' }
+    { icon: <Target size={24} className="text-medical-blue" />, label: t('def.f1') },
+    { icon: <Settings size={24} className="text-medical-blue" />, label: t('def.f2') },
+    { icon: <Activity size={24} className="text-medical-blue" />, label: t('def.f3') },
+    { icon: <ShieldCheck size={24} className="text-medical-blue" />, label: t('def.f4') }
   ];
 
   return (
@@ -42,13 +44,13 @@ const DefinitionSection = () => {
                 02
               </span>
               <motion.h2 variants={itemVariants} className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-4 sm:mb-6">
-                What is an<br />
-                <span className="text-medical-blue">Infusion Pump?</span>
+                {t('whatIs.title1')}<br />
+                <span className="text-medical-blue">{t('whatIs.title2')}</span>
               </motion.h2>
             </div>
 
             <motion.p variants={itemVariants} className="text-sm sm:text-base lg:text-lg text-gray-600 leading-relaxed max-w-lg">
-              An infusion pump is a medical device that delivers fluids, medications, or nutrients into a patient's body in controlled amounts and flow rates. Unlike gravity-based IV administration, infusion pumps regulate flow electronically, ensuring accurate dosage regardless of patient position or fluid level.
+              {t('def.desc')}
             </motion.p>
 
             <motion.div variants={itemVariants} className="grid grid-cols-2 gap-6 pt-8 border-t border-gray-200">

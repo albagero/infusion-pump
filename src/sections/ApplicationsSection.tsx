@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { HeartPulse, Baby, Microscope, Stethoscope } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const ApplicationsSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -20,26 +22,26 @@ const ApplicationsSection = () => {
 
   const applications = [
     {
-      dept: 'ICU',
-      desc: 'Vasopressors & continuous medication delivery',
+      dept: t('app.a1.d'),
+      desc: t('app.a1.v'),
       icon: <HeartPulse size={28} />,
       color: 'bg-red-50 text-red-500 border-red-500'
     },
     {
-      dept: 'NICU',
-      desc: 'Extremely precise & accurate delivery',
+      dept: t('app.a2.d'),
+      desc: t('app.a2.v'),
       icon: <Baby size={28} />,
       color: 'bg-pink-50 text-pink-500 border-pink-500'
     },
     {
-      dept: 'Oncology',
-      desc: 'Chemotherapy drug administration',
+      dept: t('app.a3.d'),
+      desc: t('app.a3.v'),
       icon: <Microscope size={28} />,
       color: 'bg-purple-50 text-purple-500 border-purple-500'
     },
     {
-      dept: 'Operating Room',
-      desc: 'Anesthesia & surgery support',
+      dept: t('app.a4.d'),
+      desc: t('app.a4.v'),
       icon: <Stethoscope size={28} />,
       color: 'bg-blue-50 text-blue-500 border-blue-500'
     }
@@ -57,10 +59,10 @@ const ApplicationsSection = () => {
                 13
               </span>
               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-2 sm:mb-4">
-                Applications
+                {t('app.title')}
               </h2>
               <p className="text-sm sm:text-base lg:text-lg text-gray-500">
-                Used in various hospital departments for different patient needs
+                {t('app.desc')}
               </p>
             </div>
 

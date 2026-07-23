@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { Monitor, Keyboard, Cog, CircuitBoard, Radio, Battery, Cpu, Zap } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const ComponentsSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -19,14 +21,14 @@ const ComponentsSection = () => {
   };
 
   const componentsList = [
-    { name: 'Display Screen', icon: <Monitor size={20} className="text-medical-blue" /> },
-    { name: 'Control Panel', icon: <Keyboard size={20} className="text-medical-blue" /> },
-    { name: 'Microcontroller', icon: <Cpu size={20} className="text-medical-blue" /> },
-    { name: 'Motor Driver', icon: <Zap size={20} className="text-medical-blue" /> },
-    { name: 'Stepper Motor', icon: <Cog size={20} className="text-medical-blue" /> },
-    { name: 'Peristaltic Pump Mechanism', icon: <CircuitBoard size={20} className="text-medical-blue" /> },
-    { name: 'Sensors (Pressure, Air-in-Line, Door)', icon: <Radio size={20} className="text-medical-blue" /> },
-    { name: 'Battery', icon: <Battery size={20} className="text-medical-blue" /> }
+    { name: t('comp.c1'), icon: <Monitor size={20} className="text-medical-blue" /> },
+    { name: t('comp.c2'), icon: <Keyboard size={20} className="text-medical-blue" /> },
+    { name: t('comp.c3'), icon: <Cpu size={20} className="text-medical-blue" /> },
+    { name: t('comp.c4'), icon: <Zap size={20} className="text-medical-blue" /> },
+    { name: t('comp.c5'), icon: <Cog size={20} className="text-medical-blue" /> },
+    { name: t('comp.c6'), icon: <CircuitBoard size={20} className="text-medical-blue" /> },
+    { name: t('comp.c7'), icon: <Radio size={20} className="text-medical-blue" /> },
+    { name: t('comp.c8'), icon: <Battery size={20} className="text-medical-blue" /> }
   ];
 
   return (
@@ -40,7 +42,7 @@ const ComponentsSection = () => {
               05
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-2 sm:mb-4 lg:mb-6">
-              Internal Components
+              {t('comp.title')}
             </h2>
 
             <motion.div 

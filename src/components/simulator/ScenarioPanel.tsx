@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CLINICAL_SCENARIOS } from '../../hooks/useSimulatorStore';
+import { useLanguage } from '../../i18n';
 
 interface ScenarioPanelProps {
   onLoadScenario: (scenario: { drugName: string; rate: number; vtbi: number; dose: number }) => void;
@@ -8,10 +9,11 @@ interface ScenarioPanelProps {
 }
 
 const ScenarioPanel: React.FC<ScenarioPanelProps> = ({ onLoadScenario, isDisabled }) => {
+  const { t } = useLanguage();
   return (
     <div className="w-full">
       <div className="text-[10px] sm:text-xs uppercase tracking-wider text-cyan-400/50 font-bold mb-2 text-center">
-        Quick-Load Scenarios
+        {t('sim.scen')}
       </div>
       <div className="flex lg:flex-wrap gap-2 overflow-x-auto lg:overflow-visible pb-2 px-1 snap-x snap-mandatory lg:snap-none scrollbar-hide"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}

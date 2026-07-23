@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const AdvantagesSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -18,20 +20,20 @@ const AdvantagesSection = () => {
   };
 
   const advantages = [
-    'High Accuracy',
-    'Continuous Delivery',
-    'Reduced Human Error',
-    'Drug Safety',
-    'ICU Compatible',
-    'Programmable'
+    t('adv.a1'),
+    t('adv.a2'),
+    t('adv.a3'),
+    t('adv.a4'),
+    t('adv.a5'),
+    t('adv.a6')
   ];
 
   const limitations = [
-    'High Cost',
-    'Maintenance Required',
-    'Needs Regular Calibration',
-    'Battery Dependency',
-    'Technical Training Required'
+    t('adv.l1'),
+    t('adv.l2'),
+    t('adv.l3'),
+    t('adv.l4'),
+    t('adv.l5')
   ];
 
   return (
@@ -42,7 +44,7 @@ const AdvantagesSection = () => {
             12
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900">
-            Advantages & Limitations
+            {t('adv.title')}
           </h2>
         </div>
 
@@ -64,7 +66,7 @@ const AdvantagesSection = () => {
             <div className="bg-gradient-to-r from-accent-green to-emerald-400 h-1 sm:h-2 w-full"></div>
             <div className="p-4 sm:p-8">
               <h3 className="text-xl sm:text-2xl font-bold text-navy-900 mb-3 sm:mb-6 flex items-center gap-2 sm:gap-3">
-                <span className="text-accent-green">Advantages</span>
+                <span className="text-accent-green">{t('adv.adv')}</span>
               </h3>
               <div className="space-y-2 sm:space-y-4">
                 {advantages.map((adv, i) => (
@@ -88,7 +90,7 @@ const AdvantagesSection = () => {
             <div className="bg-gradient-to-r from-accent-red to-orange-400 h-1 sm:h-2 w-full"></div>
             <div className="p-4 sm:p-8">
               <h3 className="text-xl sm:text-2xl font-bold text-navy-900 mb-3 sm:mb-6 flex items-center gap-2 sm:gap-3">
-                <span className="text-accent-red">Limitations</span>
+                <span className="text-accent-red">{t('adv.lim')}</span>
               </h3>
               <div className="space-y-2 sm:space-y-4">
                 {limitations.map((lim, i) => (

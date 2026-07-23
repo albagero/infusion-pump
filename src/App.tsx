@@ -25,6 +25,7 @@ import AdvantagesSection from './sections/AdvantagesSection';
 import ApplicationsSection from './sections/ApplicationsSection';
 import FutureSection from './sections/FutureSection';
 import ThankYouSection from './sections/ThankYouSection';
+import { LanguageProvider } from './i18n';
 
 function App() {
   const TOTAL_SLIDES = 23;
@@ -45,7 +46,7 @@ function App() {
   if (!mounted) return null;
 
   return (
-    <>
+    <LanguageProvider>
       {mounted && (
         <Navigation 
           currentSlide={currentSlide} 
@@ -83,7 +84,7 @@ function App() {
         <FutureSection />
         <ThankYouSection />
       </div>
-    </>
+    </LanguageProvider>
   );
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Monitor } from 'lucide-react';
+import { ChevronDown, Monitor, Globe } from 'lucide-react';
+import { useLanguage } from '../i18n';
 
 interface NavigationProps {
   currentSlide: number;
@@ -13,15 +14,30 @@ const Navigation: React.FC<NavigationProps> = ({ currentSlide, totalSlides, prog
   const slideNumber = String(currentSlide + 1).padStart(2, '0');
   const totalNumber = String(totalSlides).padStart(2, '0');
   const isHeroOrDark = currentSlide === 0 || currentSlide === totalSlides - 1 || currentSlide === 11 || currentSlide === 13;
+  const { lang, toggleLang, t } = useLanguage();
 
   return (
     <>
       {/* Progress Bar */}
       <div className="progress-bar" style={{ width: `${progress}%` }} />
 
-      {/* Top Right - Slide Counter */}
+      {/* Top Start - Language Toggle */}
+      <motion.button
+        onClick={toggleLang}
+        className={`fixed top-3 sm:top-6 start-3 sm:start-8 z-50 flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full backdrop-blur-md shadow-sm border transition-all hover:scale-105 active:scale-95 ${isHeroOrDark ? 'bg-black/20 text-white border-white/10 hover:bg-black/40' : 'bg-white/60 text-navy-900 border-gray-200/50 hover:bg-white/90'}`}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+      >
+        <Globe size={16} className={isHeroOrDark ? 'text-white/70' : 'text-medical-blue'} />
+        <span className="text-xs sm:text-sm font-bold tracking-wide">
+          {lang === 'en' ? 'عربي' : 'English'}
+        </span>
+      </motion.button>
+
+      {/* Top End - Slide Counter */}
       <motion.div
-        className="fixed top-3 sm:top-6 right-3 sm:right-8 z-50"
+        className="fixed top-3 sm:top-6 end-3 sm:end-8 z-50"
         initial={{ opacity: 0, x: 20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.6 }}
@@ -59,7 +75,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentSlide, totalSlides, prog
           transition={{ delay: 1, duration: 0.6 }}
         >
           <span className={`hidden sm:block text-xs font-medium tracking-wider uppercase ${isHeroOrDark ? 'text-white/50' : 'text-gray-400'}`}>
-            {currentSlide === 0 ? "Scroll to explore" : "Scroll"}
+            {currentSlide === 0 ? t('nav.scrollToExplore') : t('nav.scroll')}
           </span>
           <motion.div
             animate={{ y: [0, 6, 0] }}

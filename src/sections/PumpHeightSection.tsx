@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Shield, CheckCircle, AlertTriangle } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const PumpHeightSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -26,7 +28,7 @@ const PumpHeightSection = () => {
             14
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-2">
-            Pump Height & Hydrostatic Pressure
+            {t('ph.title')}
           </h2>
         </div>
 
@@ -41,10 +43,10 @@ const PumpHeightSection = () => {
           <motion.div variants={itemVariants} className="flex flex-col gap-4">
             
             <div className="glass-card rounded-2xl p-5 sm:p-6 border-l-4 border-l-medical-blue flex-1">
-              <h3 className="text-xl font-bold text-navy-900 mb-4">Scientific Principle</h3>
+              <h3 className="text-xl font-bold text-navy-900 mb-4">{t('ph.s1.title')}</h3>
               
               <div className="bg-blue-50/50 rounded-xl p-4 mb-4 border border-blue-100 flex flex-col items-center">
-                <span className="text-xs font-bold text-blue-800 uppercase tracking-wider mb-2">Hydrostatic Pressure</span>
+                <span className="text-xs font-bold text-blue-800 uppercase tracking-wider mb-2">{t('ph.s1.sub')}</span>
                 <div className="text-3xl sm:text-4xl font-serif italic font-bold text-medical-blue bg-white px-6 py-2 rounded-lg shadow-sm">
                   P = &rho;gh
                 </div>
@@ -53,37 +55,37 @@ const PumpHeightSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-6">
                 <div className="flex items-center gap-2 text-sm">
                   <span className="font-serif italic font-bold text-medical-blue w-4">P</span>
-                  <span className="text-gray-700">= Pressure</span>
+                  <span className="text-gray-700">{t('ph.s1.p')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <span className="font-serif italic font-bold text-medical-blue w-4">&rho;</span>
-                  <span className="text-gray-700">= Fluid Density</span>
+                  <span className="text-gray-700">{t('ph.s1.d')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <span className="font-serif italic font-bold text-medical-blue w-4">g</span>
-                  <span className="text-gray-700">= Gravity</span>
+                  <span className="text-gray-700">{t('ph.s1.g')}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <span className="font-serif italic font-bold text-medical-blue w-4">h</span>
-                  <span className="text-gray-700">= Height</span>
+                  <span className="text-gray-700">{t('ph.s1.h')}</span>
                 </div>
               </div>
 
               <div className="bg-white rounded-xl p-4 border border-gray-100 flex flex-col items-center">
                 <div className="w-full flex justify-between items-center px-4 mb-2">
                   <div className="flex flex-col items-center">
-                    <div className="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-bold text-sm shadow-sm border border-blue-200">Higher IV Bag</div>
+                    <div className="px-4 py-2 bg-blue-100 text-blue-800 rounded-lg font-bold text-sm shadow-sm border border-blue-200">{t('ph.s1.b1')}</div>
                     <ArrowDown size={20} className="text-blue-400 my-1" />
-                    <div className="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg font-bold text-sm shadow-sm border border-gray-200">Pump</div>
+                    <div className="px-4 py-2 bg-gray-100 text-gray-800 rounded-lg font-bold text-sm shadow-sm border border-gray-200">{t('ph.s1.b2')}</div>
                     <ArrowDown size={20} className="text-blue-400 my-1" />
-                    <div className="px-4 py-2 bg-green-100 text-green-800 rounded-lg font-bold text-sm shadow-sm border border-green-200">Patient</div>
+                    <div className="px-4 py-2 bg-green-100 text-green-800 rounded-lg font-bold text-sm shadow-sm border border-green-200">{t('ph.s1.b3')}</div>
                   </div>
                   <div className="hidden sm:flex flex-col gap-2 pl-4 border-l border-gray-200 text-sm font-semibold text-gray-600">
-                    <span className="text-blue-600">Higher height</span>
+                    <span className="text-blue-600">{t('ph.s1.t1')}</span>
                     <span className="text-gray-400">&darr;</span>
-                    <span className="text-blue-700">Higher hydrostatic pressure</span>
+                    <span className="text-blue-700">{t('ph.s1.t2')}</span>
                     <span className="text-gray-400">&darr;</span>
-                    <span className="text-blue-800">Greater force pushing fluid</span>
+                    <span className="text-blue-800">{t('ph.s1.t3')}</span>
                   </div>
                 </div>
               </div>
@@ -91,13 +93,13 @@ const PumpHeightSection = () => {
 
             <div className="glass-card rounded-2xl p-4 sm:p-5 border-l-4 border-l-red-400">
               <h4 className="text-sm font-bold text-red-600 uppercase tracking-wider mb-2 flex items-center gap-2">
-                <AlertTriangle size={16} /> Potential Problems
+                <AlertTriangle size={16} /> {t('ph.s2.title')}
               </h4>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-semibold border border-red-100">Free Flow</span>
-                <span className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-semibold border border-red-100">Siphoning</span>
-                <span className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-semibold border border-red-100">Inaccurate infusion</span>
-                <span className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-semibold border border-red-100">Occlusion pressure changes</span>
+                <span className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-semibold border border-red-100">{t('ph.s2.l1')}</span>
+                <span className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-semibold border border-red-100">{t('ph.s2.l2')}</span>
+                <span className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-semibold border border-red-100">{t('ph.s2.l3')}</span>
+                <span className="px-3 py-1 bg-red-50 text-red-700 rounded-full text-xs font-semibold border border-red-100">{t('ph.s2.l4')}</span>
               </div>
             </div>
 
@@ -112,18 +114,18 @@ const PumpHeightSection = () => {
                 <Shield size={40} />
               </div>
 
-              <h3 className="text-xs sm:text-sm font-bold text-green-600 uppercase tracking-widest mb-2">Biomedical Engineering Solution</h3>
+              <h3 className="text-xs sm:text-sm font-bold text-green-600 uppercase tracking-widest mb-2">{t('ph.s3.sub')}</h3>
               <h2 className="text-3xl sm:text-4xl font-black text-navy-900 mb-6 leading-tight">
-                Anti-Free-Flow <br/> Valve (AFF)
+                {t('ph.s3.title1')} <br/> {t('ph.s3.title2')}
               </h2>
 
               <p className="text-base sm:text-lg text-gray-700 font-medium leading-relaxed max-w-md mx-auto mb-8">
-                The valve <strong className="text-green-700">automatically closes</strong> when the pump door is opened, completely preventing uncontrolled gravity-driven flow to the patient.
+                {t('ph.s3.desc1')}<strong className="text-green-700">{t('ph.s3.desc2')}</strong>{t('ph.s3.desc3')}
               </p>
 
               <div className="inline-flex items-center gap-3 bg-white px-5 py-3 rounded-xl shadow-md border border-green-100">
                 <CheckCircle className="text-green-500" size={24} />
-                <span className="text-sm font-bold text-navy-800">Critical Safety Mechanism</span>
+                <span className="text-sm font-bold text-navy-800">{t('ph.s3.mech')}</span>
               </div>
             </div>
           </motion.div>

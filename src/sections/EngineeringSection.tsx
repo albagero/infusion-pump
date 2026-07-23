@@ -1,9 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowDown } from 'lucide-react';
+import { Settings, Cpu, Zap, Radio, AlertTriangle, Monitor, Droplets, ArrowDown, MoveRight, ChevronRight, Activity } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const EngineeringSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -37,7 +39,7 @@ const EngineeringSection = () => {
 
   const HArrow = () => (
     <motion.div variants={itemVariants} className="flex items-center justify-center px-0.5 lg:px-2">
-      <ArrowRight className="text-blue-300 w-4 h-4 lg:w-6 lg:h-6" strokeWidth={2} />
+      <MoveRight className="text-blue-300 w-4 h-4 lg:w-6 lg:h-6 rtl:rotate-180" strokeWidth={2} />
     </motion.div>
   );
 
@@ -47,19 +49,13 @@ const EngineeringSection = () => {
     </motion.div>
   );
 
-  const VLine = () => (
-    <motion.div variants={itemVariants} className="flex justify-center h-6 lg:h-10">
-      <div className="w-0.5 bg-blue-200 h-full rounded-full" />
-    </motion.div>
-  );
-
   return (
     <SlideWrapper className="bg-section-gradient" id="engineering">
       <div className="w-full h-full flex flex-col justify-center items-center px-4 py-4 sm:px-6 lg:px-12 max-w-7xl mx-auto overflow-hidden">
         {/* Title */}
         <div className="text-center mb-4 sm:mb-6 w-full">
           <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">09</span>
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900">System Architecture</h2>
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900">{t('eng.title')}</h2>
         </div>
 
         {/* MOBILE VIEW (Vertical List) */}
@@ -70,33 +66,33 @@ const EngineeringSection = () => {
             initial="hidden"
             animate="visible"
           >
-            <Block title="Power Supply" subtitle="12V DC" />
+            <Block title={t('eng.b1.title') as string} subtitle={t('eng.b1.sub') as string} />
             <VArrow />
-            <Block title="PCB" subtitle="Circuit Board" />
+            <Block title={t('eng.b2.title') as string} subtitle={t('eng.b2.sub') as string} />
             <VArrow />
             <Block
-              title="Microcontroller"
-              subtitle="ATmega / ARM"
+              title={t('eng.b3.title') as string}
+              subtitle={t('eng.b3.sub') as string}
               color="bg-medical-blue text-white border-none shadow-xl shadow-medical-blue/40 font-extrabold"
             />
             <VArrow />
             <div className="flex gap-2 justify-center w-full my-2">
-              <Block title="Display" subtitle="LCD / OLED" color="bg-blue-50 text-blue-800 border border-blue-200" />
-              <Block title="Sensors" subtitle="Pressure, Flow" color="bg-blue-50 text-blue-800 border border-blue-200" />
-              <Block title="Alarm" subtitle="Buzzer + LED" color="bg-red-50 text-red-700 border border-red-200" />
+              <Block title={t('eng.c1.title') as string} subtitle={t('eng.c1.sub') as string} color="bg-blue-50 text-blue-800 border border-blue-200" />
+              <Block title={t('eng.c2.title') as string} subtitle={t('eng.c2.sub') as string} color="bg-blue-50 text-blue-800 border border-blue-200" />
+              <Block title={t('eng.c3.title') as string} subtitle={t('eng.c3.sub') as string} color="bg-red-50 text-red-700 border border-red-200" />
             </div>
             <VArrow />
-            <Block title="Motor Driver" subtitle="H-Bridge" />
+            <Block title={t('eng.b4.title') as string} subtitle={t('eng.b4.sub') as string} />
             <VArrow />
-            <Block title="Stepper Motor" subtitle="NEMA 17" />
+            <Block title={t('eng.b5.title') as string} subtitle={t('eng.b5.sub') as string} />
             <VArrow />
-            <Block title="Rollers" subtitle="Peristaltic" />
+            <Block title={t('eng.m1.title') as string} subtitle={t('eng.m1.sub') as string} />
             <VArrow />
-            <Block title="IV Tube" subtitle="Silicone" />
+            <Block title={t('eng.m2.title') as string} subtitle={t('eng.m2.sub') as string} />
             <VArrow />
             <Block
-              title="Patient"
-              subtitle="Drug Delivery"
+              title={t('eng.m3.title') as string}
+              subtitle={t('eng.m3.sub') as string}
               color="bg-emerald-500 text-white border-none shadow-lg shadow-emerald-400/40"
             />
           </motion.div>
@@ -111,29 +107,29 @@ const EngineeringSection = () => {
         >
           {/* Main Core Flow */}
           <div className="flex items-center justify-center w-full flex-wrap gap-2 lg:gap-4 mb-8">
-            <Block title="Power Supply" subtitle="12V DC" />
+            <Block title={t('eng.b1.title') as string} subtitle={t('eng.b1.sub') as string} />
             <HArrow />
-            <Block title="PCB" subtitle="Circuit Board" />
+            <Block title={t('eng.b2.title') as string} subtitle={t('eng.b2.sub') as string} />
             <HArrow />
             <Block
-              title="Microcontroller"
-              subtitle="ATmega / ARM"
+              title={t('eng.b3.title') as string}
+              subtitle={t('eng.b3.sub') as string}
               color="bg-medical-blue text-white border-none shadow-xl shadow-medical-blue/40 font-extrabold"
             />
             <HArrow />
-            <Block title="Motor Driver" subtitle="H-Bridge" />
+            <Block title={t('eng.b4.title') as string} subtitle={t('eng.b4.sub') as string} />
             <HArrow />
-            <Block title="Stepper Motor" subtitle="NEMA 17" />
+            <Block title={t('eng.b5.title') as string} subtitle={t('eng.b5.sub') as string} />
           </div>
 
           <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-8 lg:gap-16">
             {/* Peripherals (Sensory & UI) */}
             <div className="flex flex-col items-center">
-              <h4 className="text-[10px] lg:text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Control & Monitoring</h4>
+              <h4 className="text-[10px] lg:text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2"><Radio size={16} /> {t('eng.ctrl')}</h4>
               <div className="flex items-center gap-2 lg:gap-4">
-                <Block title="Display" subtitle="LCD / OLED" color="bg-blue-50 text-blue-800 border border-blue-200" />
-                <Block title="Sensors" subtitle="Pressure, Flow, Air" color="bg-blue-50 text-blue-800 border border-blue-200" />
-                <Block title="Alarm System" subtitle="Buzzer + LED" color="bg-red-50 text-red-700 border border-red-200" />
+                <Block title={t('eng.c1.title') as string} subtitle={t('eng.c1.sub') as string} color="bg-blue-50 text-blue-800 border border-blue-200" />
+                <Block title={t('eng.c2.title') as string} subtitle={t('eng.c2.sub') as string} color="bg-blue-50 text-blue-800 border border-blue-200" />
+                <Block title={t('eng.c3.title') as string} subtitle={t('eng.c3.sub') as string} color="bg-red-50 text-red-700 border border-red-200" />
               </div>
             </div>
 
@@ -142,15 +138,15 @@ const EngineeringSection = () => {
 
             {/* Output (Delivery) */}
             <div className="flex flex-col items-center mt-4 lg:mt-0">
-              <h4 className="text-[10px] lg:text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">Fluid Delivery Mechanism</h4>
+              <h4 className="text-[10px] lg:text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2"><Droplets size={16} /> {t('eng.mech')}</h4>
               <div className="flex items-center gap-2 lg:gap-4">
-                <Block title="Rollers" subtitle="Peristaltic" />
+                <Block title={t('eng.m1.title') as string} subtitle={t('eng.m1.sub') as string} />
                 <HArrow />
-                <Block title="IV Tube" subtitle="Silicone" />
+                <Block title={t('eng.m2.title') as string} subtitle={t('eng.m2.sub') as string} />
                 <HArrow />
                 <Block
-                  title="Patient"
-                  subtitle="Drug Delivery"
+                  title={t('eng.m3.title') as string}
+                  subtitle={t('eng.m3.sub') as string}
                   color="bg-emerald-500 text-white border-none shadow-lg shadow-emerald-400/40"
                 />
               </div>

@@ -30,7 +30,8 @@ export default {
         },
       },
       fontFamily: {
-        inter: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        arabic: ['Cairo', 'system-ui', 'sans-serif'],
       },
       animation: {
         'ecg': 'ecg 2s linear infinite',

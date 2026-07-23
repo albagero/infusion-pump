@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, CalendarDays, ClipboardList, PenTool, CheckCircle2 } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const MaintenanceWorkflowSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -18,14 +20,14 @@ const MaintenanceWorkflowSection = () => {
   };
 
   const workflowSteps = [
-    { label: 'Receive Infusion Pump', bg: 'bg-gray-100 text-gray-800 border-gray-200' },
-    { label: 'Visual Inspection & Cleaning', bg: 'bg-blue-50 text-blue-800 border-blue-200' },
-    { label: 'Mechanical Inspection', bg: 'bg-blue-50 text-blue-800 border-blue-200' },
-    { label: 'Functional Tests\n(Flow Accuracy, Alarms, Sensors)', bg: 'bg-indigo-50 text-indigo-800 border-indigo-200' },
-    { label: 'Battery & Electrical Safety Test', bg: 'bg-purple-50 text-purple-800 border-purple-200' },
-    { label: 'Calibration (if required)', bg: 'bg-amber-50 text-amber-800 border-amber-200' },
-    { label: 'Documentation & PM Label', bg: 'bg-green-50 text-green-800 border-green-200' },
-    { label: 'Return Device to Clinical Use', bg: 'bg-medical-blue text-white border-blue-700 shadow-md' }
+    { label: t('mw.w1'), bg: 'bg-gray-100 text-gray-800 border-gray-200' },
+    { label: t('mw.w2'), bg: 'bg-blue-50 text-blue-800 border-blue-200' },
+    { label: t('mw.w3'), bg: 'bg-blue-50 text-blue-800 border-blue-200' },
+    { label: t('mw.w4'), bg: 'bg-indigo-50 text-indigo-800 border-indigo-200' },
+    { label: t('mw.w5'), bg: 'bg-purple-50 text-purple-800 border-purple-200' },
+    { label: t('mw.w6'), bg: 'bg-amber-50 text-amber-800 border-amber-200' },
+    { label: t('mw.w7'), bg: 'bg-green-50 text-green-800 border-green-200' },
+    { label: t('mw.w8'), bg: 'bg-medical-blue text-white border-blue-700 shadow-md' }
   ];
 
   return (
@@ -37,7 +39,7 @@ const MaintenanceWorkflowSection = () => {
             17
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-2">
-            PM Workflow & Schedule
+            {t('mw.title')}
           </h2>
         </div>
 
@@ -52,7 +54,7 @@ const MaintenanceWorkflowSection = () => {
           <motion.div variants={itemVariants} className="lg:w-1/2 glass-card rounded-2xl p-5 sm:p-6 flex flex-col items-center">
             <h3 className="text-xl font-bold text-navy-900 mb-6 flex items-center gap-2">
               <ClipboardList className="text-medical-blue" />
-              Biomedical Engineer PM Workflow
+              {t('mw.sub1')}
             </h3>
             
             <div className="flex flex-col items-center w-full max-w-sm relative">
@@ -78,29 +80,29 @@ const MaintenanceWorkflowSection = () => {
             <div className="glass-card rounded-2xl p-5 sm:p-6 border-l-4 border-l-purple-500 flex-1">
               <h3 className="text-xl font-bold text-navy-900 mb-4 flex items-center gap-2">
                 <CalendarDays className="text-purple-500" />
-                Recommended PM Schedule
+                {t('mw.sub2')}
               </h3>
               
               <div className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-purple-50 border-b border-purple-100">
-                      <th className="px-4 py-3 text-xs font-bold text-purple-800 uppercase tracking-wider w-1/3">Interval</th>
-                      <th className="px-4 py-3 text-xs font-bold text-purple-800 uppercase tracking-wider">Main Tasks</th>
+                      <th className="px-4 py-3 text-xs font-bold text-purple-800 uppercase tracking-wider w-1/3">{t('mw.th1')}</th>
+                      <th className="px-4 py-3 text-xs font-bold text-purple-800 uppercase tracking-wider">{t('mw.th2')}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100 text-sm">
                     <tr className="hover:bg-gray-50 transition-colors">
-                      <td className="px-4 py-3 whitespace-nowrap font-bold text-gray-800">Before each use</td>
-                      <td className="px-4 py-3 text-gray-600 font-medium">Visual inspection, self-test, battery status</td>
+                      <td className="px-4 py-3 whitespace-nowrap font-bold text-gray-800">{t('mw.r1.c1')}</td>
+                      <td className="px-4 py-3 text-gray-600 font-medium">{t('mw.r1.c2')}</td>
                     </tr>
                     <tr className="hover:bg-gray-50 transition-colors">
-                      <td className="px-4 py-3 whitespace-nowrap font-bold text-gray-800">Every 6–12 months</td>
-                      <td className="px-4 py-3 text-gray-600 font-medium">Functional testing, calibration, electrical safety test</td>
+                      <td className="px-4 py-3 whitespace-nowrap font-bold text-gray-800">{t('mw.r2.c1')}</td>
+                      <td className="px-4 py-3 text-gray-600 font-medium">{t('mw.r2.c2')}</td>
                     </tr>
                     <tr className="hover:bg-gray-50 transition-colors">
-                      <td className="px-4 py-3 whitespace-nowrap font-bold text-gray-800">As needed</td>
-                      <td className="px-4 py-3 text-gray-600 font-medium">Replace battery, tubing mechanism, keypad, or other worn parts</td>
+                      <td className="px-4 py-3 whitespace-nowrap font-bold text-gray-800">{t('mw.r3.c1')}</td>
+                      <td className="px-4 py-3 text-gray-600 font-medium">{t('mw.r3.c2')}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -109,10 +111,10 @@ const MaintenanceWorkflowSection = () => {
 
             <div className="glass-card rounded-2xl p-5 sm:p-6 bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100">
               <h4 className="text-sm font-bold text-green-800 uppercase tracking-widest mb-3 flex items-center gap-2">
-                <PenTool size={16} /> Speaker Notes
+                <PenTool size={16} /> {t('mw.notes')}
               </h4>
               <p className="text-sm sm:text-base text-green-900 font-medium leading-relaxed italic">
-                "Preventive maintenance is one of the most important responsibilities of a biomedical engineer. By performing scheduled inspections, testing alarms and sensors, verifying flow accuracy, and conducting electrical safety tests, we ensure the infusion pump delivers medications accurately and safely, reducing the risk of device failure and protecting patients."
+                {t('mw.quote')}
               </p>
             </div>
 

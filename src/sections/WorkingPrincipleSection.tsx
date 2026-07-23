@@ -3,47 +3,49 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Settings, Cpu, Cog, RotateCcw, Activity, Droplets, ArrowRight, Play, ChevronDown } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const WorkingPrincipleSection = () => {
+  const { t } = useLanguage();
   const [key, setKey] = useState(0); // Used to trigger animation replay
   const [expandedStep, setExpandedStep] = useState<number | null>(null);
 
   const steps = [
     { 
-      name: 'Set Parameters', 
+      name: t('wp.s1.name') as string, 
       icon: <Settings size={32} />, 
       image: assetUrl('/img/new_params.jpg'),
-      details: ['Flow rate (mL/h)', 'Volume to be infused (VTBI)', 'Drug library (if available)']
+      details: [t('wp.s1.d1') as string, t('wp.s1.d2') as string, t('wp.s1.d3') as string]
     },
     { 
-      name: 'Microcontroller', 
+      name: t('wp.s2.name') as string, 
       icon: <Cpu size={32} />, 
       image: assetUrl('/img/infusion_pump_internals.png'),
-      details: ['Calculates required motor speed', 'Checks safety limits', 'Initializes sensors']
+      details: [t('wp.s2.d1') as string, t('wp.s2.d2') as string, t('wp.s2.d3') as string]
     },
     { 
-      name: 'Motor Driver & Stepper Motor', 
+      name: t('wp.s3.name') as string, 
       icon: <Cog size={32} />, 
       image: assetUrl('/img/step3_motor.jpg'),
-      details: ['Receives commands from microcontroller', 'Sends pulses to stepper motor', 'Ensures precise movement']
+      details: [t('wp.s3.d1') as string, t('wp.s3.d2') as string, t('wp.s3.d3') as string]
     },
     { 
-      name: 'Peristaltic Rollers Compress', 
+      name: t('wp.s4.name') as string, 
       icon: <RotateCcw size={32} />, 
       image: assetUrl('/img/new_rollers.jpg'),
-      details: ['Rollers sequentially compress tubing', 'Creates controlled forward movement', 'Maintains precise volume']
+      details: [t('wp.s4.d1') as string, t('wp.s4.d2') as string, t('wp.s4.d3') as string]
     },
     { 
-      name: 'Sensors Monitor Flow & Safety', 
+      name: t('wp.s5.name') as string, 
       icon: <Activity size={32} />, 
       image: assetUrl('/img/pump_sensors.png'),
-      details: ['Air-in-line sensor', 'Occlusion (pressure) sensor', 'Door sensor & Battery status']
+      details: [t('wp.s5.d1') as string, t('wp.s5.d2') as string, t('wp.s5.d3') as string]
     },
     { 
-      name: 'Fluid Delivered to Patient', 
+      name: t('wp.s6.name') as string, 
       icon: <Droplets size={32} />, 
       image: assetUrl('/img/new_fluid.jpg'),
-      details: ['Programmed flow rate maintained', 'Stops and alarms if abnormal']
+      details: [t('wp.s6.d1') as string, t('wp.s6.d2') as string]
     }
   ];
 
@@ -77,20 +79,20 @@ const WorkingPrincipleSection = () => {
         <div className="text-center mb-2 sm:mb-4 w-full">
           <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-2 gap-2">
              <div>
-               <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase block text-left mb-1">
+               <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase block rtl:text-right text-left mb-1">
                 06
                </span>
-               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 text-left mb-1">
-                Working Principle
+               <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 rtl:text-right text-left mb-1">
+                {t('wp.title')}
                </h2>
-               <p className="text-xs sm:text-sm text-gray-500 text-left font-medium">Click on any step below to see details.</p>
+               <p className="text-xs sm:text-sm text-gray-500 rtl:text-right text-left font-medium">{t('wp.subtitle')}</p>
              </div>
              
              <button 
                onClick={replayAnimation}
                className="flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-50 hover:bg-medical-blue hover:text-white text-medical-blue rounded-full transition-colors text-xs sm:text-sm font-semibold self-start sm:self-auto shadow-sm"
              >
-               <Play size={14} /> Play Animation
+               <Play size={14} className="rtl:rotate-180" /> {t('wp.play')}
              </button>
           </div>
         </div>

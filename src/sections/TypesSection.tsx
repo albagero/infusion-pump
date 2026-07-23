@@ -3,32 +3,34 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Beaker, Syringe, Hand, Pill, Circle } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const TypesSection = () => {
   const [selectedType, setSelectedType] = useState(0);
+  const { t } = useLanguage();
 
   const pumpTypes = [
     { 
-      name: 'Volumetric Pump', 
+      name: t('types.t1.name') as string, 
       icon: <Beaker size={28} />, 
-      shortDesc: 'Most Common', 
-      fullDesc: 'Used for controlled delivery of large volumes of fluids over a specific period. Standard in general wards.',
+      shortDesc: t('types.t1.short') as string, 
+      fullDesc: t('types.t1.desc') as string,
       image: assetUrl('/img/volumetric_pump.png'),
       isHighlight: true
     },
     { 
-      name: 'Syringe Pump', 
+      name: t('types.t2.name') as string, 
       icon: <Syringe size={28} />, 
-      shortDesc: 'High Precision', 
-      fullDesc: 'Uses a motor-driven syringe plunger. Extremely accurate flow rates, ideal for ICU and neonatal care.',
+      shortDesc: t('types.t2.short') as string, 
+      fullDesc: t('types.t2.desc') as string,
       image: assetUrl('/img/syringe_pump.png'),
       isHighlight: false
     },
     { 
-      name: 'Insulin Pump', 
+      name: t('types.t3.name') as string, 
       icon: <Pill size={28} />, 
-      shortDesc: 'Continuous Delivery', 
-      fullDesc: 'Small, wearable devices for continuous subcutaneous insulin delivery in diabetes management.',
+      shortDesc: t('types.t3.short') as string, 
+      fullDesc: t('types.t3.desc') as string,
       image: assetUrl('/img/insulin_pump.png'),
       isHighlight: false
     }
@@ -55,10 +57,10 @@ const TypesSection = () => {
             04
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-1 sm:mb-4">
-            Types of Infusion Pumps
+            {t('types.title')}
           </h2>
           <p className="text-xs sm:text-base lg:text-lg text-gray-500">
-            Each type is optimized for different clinical applications
+            {t('types.subtitle')}
           </p>
         </div>
 

@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckSquare, Wrench, Settings, Zap, BookOpen, CheckCircle, ShieldCheck } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const ResponsibilitiesSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -18,13 +20,13 @@ const ResponsibilitiesSection = () => {
   };
 
   const responsibilities = [
-    { title: 'Acceptance Testing', icon: <CheckSquare size={32} />, color: 'text-blue-500', bg: 'bg-blue-50' },
-    { title: 'Preventive Maintenance', icon: <Settings size={32} />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
-    { title: 'Corrective Maintenance', icon: <Wrench size={32} />, color: 'text-orange-500', bg: 'bg-orange-50' },
-    { title: 'Calibration', icon: <CheckCircle size={32} />, color: 'text-green-500', bg: 'bg-green-50' },
-    { title: 'Electrical Safety', icon: <Zap size={32} />, color: 'text-yellow-500', bg: 'bg-yellow-50' },
-    { title: 'User Training', icon: <BookOpen size={32} />, color: 'text-purple-500', bg: 'bg-purple-50' },
-    { title: 'Documentation', icon: <ShieldCheck size={32} />, color: 'text-indigo-500', bg: 'bg-indigo-50' }
+    { title: t('resp.r1') as string, icon: <CheckSquare size={32} />, color: 'text-blue-500', bg: 'bg-blue-50' },
+    { title: t('resp.r2') as string, icon: <Settings size={32} />, color: 'text-cyan-500', bg: 'bg-cyan-50' },
+    { title: t('resp.r3') as string, icon: <Wrench size={32} />, color: 'text-orange-500', bg: 'bg-orange-50' },
+    { title: t('resp.r4') as string, icon: <CheckCircle size={32} />, color: 'text-green-500', bg: 'bg-green-50' },
+    { title: t('resp.r5') as string, icon: <Zap size={32} />, color: 'text-yellow-500', bg: 'bg-yellow-50' },
+    { title: t('resp.r6') as string, icon: <BookOpen size={32} />, color: 'text-purple-500', bg: 'bg-purple-50' },
+    { title: t('resp.r7') as string, icon: <ShieldCheck size={32} />, color: 'text-indigo-500', bg: 'bg-indigo-50' }
   ];
 
   return (
@@ -35,10 +37,10 @@ const ResponsibilitiesSection = () => {
             11
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-2 sm:mb-4">
-            Core Responsibilities
+            {t('resp.title')}
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-gray-500">
-            Biomedical Engineering duties for infusion pump lifecycle management
+            {t('resp.subtitle')}
           </p>
         </div>
 

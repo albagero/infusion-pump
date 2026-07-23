@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { RotateCcw, ArrowDownToLine, ArrowRight, CheckCircle } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const FlowMechanismSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -19,10 +21,10 @@ const FlowMechanismSection = () => {
   };
 
   const steps = [
-    { text: 'Rollers rotate', icon: <RotateCcw size={20} />, color: 'blue' },
-    { text: 'Tube is compressed', icon: <ArrowDownToLine size={20} />, color: 'blue' },
-    { text: 'Fluid is pushed forward', icon: <ArrowRight size={20} />, color: 'blue' },
-    { text: 'Accurate flow is maintained', icon: <CheckCircle size={20} />, color: 'green' }
+    { text: t('flow.s1') as string, icon: <RotateCcw size={20} />, color: 'blue' },
+    { text: t('flow.s2') as string, icon: <ArrowDownToLine size={20} />, color: 'blue' },
+    { text: t('flow.s3') as string, icon: <ArrowRight size={20} />, color: 'blue' },
+    { text: t('flow.s4') as string, icon: <CheckCircle size={20} />, color: 'green' }
   ];
 
   return (
@@ -35,8 +37,8 @@ const FlowMechanismSection = () => {
             <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-1 sm:mb-2 block">
               08
             </span>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-3 sm:mb-12">
-              Flow Mechanism
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-1 sm:mb-2">
+              {t('flow.title')}
             </h2>
 
             <motion.div 

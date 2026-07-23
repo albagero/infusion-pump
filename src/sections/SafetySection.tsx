@@ -3,8 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { AlertTriangle, Info, Wrench, CheckCircle2, Ban, Wind, BatteryWarning, DoorOpen } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const PumpAlarmVisualizer = ({ type }: { type: string }) => {
+  const { t } = useLanguage();
   const getOverlay = () => {
     switch (type) {
       case 'occlusion':
@@ -14,7 +16,7 @@ const PumpAlarmVisualizer = ({ type }: { type: string }) => {
               <Ban size={48} className="text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)] mb-1" />
             </motion.div>
             <div className="bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-lg uppercase tracking-wider animate-pulse">
-              Blockage
+              {t('safe.ov1')}
             </div>
           </div>
         );
@@ -25,7 +27,7 @@ const PumpAlarmVisualizer = ({ type }: { type: string }) => {
               <Wind size={48} className="text-cyan-400 drop-shadow-[0_0_8px_rgba(34,211,238,0.8)] mb-1" />
             </motion.div>
             <div className="bg-cyan-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-lg uppercase tracking-wider animate-pulse">
-              Air In Line
+              {t('safe.ov2')}
             </div>
           </div>
         );
@@ -36,7 +38,7 @@ const PumpAlarmVisualizer = ({ type }: { type: string }) => {
               <BatteryWarning size={56} className="text-red-600 drop-shadow-[0_0_12px_rgba(220,38,38,1)] mb-1" />
             </motion.div>
             <div className="text-red-500 text-[10px] font-bold uppercase tracking-widest mt-1">
-              Critically Low
+              {t('safe.ov3')}
             </div>
           </div>
         );
@@ -49,7 +51,7 @@ const PumpAlarmVisualizer = ({ type }: { type: string }) => {
               <DoorOpen size={48} className="text-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.8)] mb-1" />
             </motion.div>
             <div className="bg-yellow-500 text-black text-[10px] font-black px-2 py-0.5 rounded shadow-lg uppercase tracking-wider animate-pulse">
-              Door Open
+              {t('safe.ov4')}
             </div>
           </div>
         );
@@ -70,38 +72,39 @@ const PumpAlarmVisualizer = ({ type }: { type: string }) => {
 
 const SafetySection = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const { t } = useLanguage();
 
   const tabs = [
-    'Occlusion Alarm',
-    'Air Bubble Alarm',
-    'Low Battery Alarm',
-    'Door Open Alarm'
+    t('safe.t1'),
+    t('safe.t2'),
+    t('safe.t3'),
+    t('safe.t4')
   ];
 
   const content = [
     {
       type: 'occlusion',
-      description: 'Detects blockage in the tubing or high pressure and stops the infusion to ensure patient safety.',
-      causes: ['Kinked IV tubing', 'Closed clamp', 'Blocked catheter', 'Faulty pressure sensor'],
-      action: ['Inspect tubing', 'Remove obstruction', 'Test pressure sensor']
+      description: t('safe.c1.desc') as string,
+      causes: t('safe.c1.causes') as string[],
+      action: t('safe.c1.actions') as string[]
     },
     {
       type: 'air',
-      description: 'Detects air bubbles in IV line to prevent air embolism.',
-      causes: ['Air in tubing', 'Improper priming', 'Dirty optical sensor'],
-      action: ['Re-prime tubing', 'Clean sensor', 'Replace IV set']
+      description: t('safe.c2.desc') as string,
+      causes: t('safe.c2.causes') as string[],
+      action: t('safe.c2.actions') as string[]
     },
     {
       type: 'battery',
-      description: 'Alerts when battery is low to prevent unexpected shutdown during transport or power failure.',
-      causes: ['Prolonged use on battery', 'Aged battery cells', 'Charging circuit fault'],
-      action: ['Inspect battery health', 'Check charging circuit', 'Replace aged batteries']
+      description: t('safe.c3.desc') as string,
+      causes: t('safe.c3.causes') as string[],
+      action: t('safe.c3.actions') as string[]
     },
     {
       type: 'door',
-      description: 'Ensures pump door is securely closed before operation.',
-      causes: ['Improper tubing loading', 'Damaged latch mechanism', 'User error'],
-      action: ['Close door securely', 'Check for tubing pinch', 'Inspect latch assembly']
+      description: t('safe.c4.desc') as string,
+      causes: t('safe.c4.causes') as string[],
+      action: t('safe.c4.actions') as string[]
     }
   ];
 
@@ -113,7 +116,7 @@ const SafetySection = () => {
             10
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900">
-            Safety Features
+            {t('safe.title')}
           </h2>
         </div>
 

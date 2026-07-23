@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const WhatIsPumpSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -29,8 +31,8 @@ const WhatIsPumpSection = () => {
         >
           <div className="text-center mt-4">
              <motion.h2 variants={itemVariants} className="text-3xl sm:text-5xl lg:text-6xl font-bold text-navy-900 mb-4 capitalize">
-                What is an<br className="sm:hidden" />
-                <span className="text-medical-blue sm:ml-3">Infusion Pump?</span>
+                {t('whatIs.title1')}<br className="sm:hidden" />
+                <span className="text-medical-blue sm:ms-3">{t('whatIs.title2')}</span>
              </motion.h2>
           </div>
 

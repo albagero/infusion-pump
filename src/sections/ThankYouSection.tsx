@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const ThankYouSection = () => {
+  const { t } = useLanguage();
   return (
     <SlideWrapper className="bg-dark-gradient" id="thank-you">
       {/* Floating Particles */}
@@ -31,20 +33,20 @@ const ThankYouSection = () => {
           viewport={{ once: false }}
         >
           <h2 className="text-4xl sm:text-6xl md:text-8xl font-bold text-white mb-3 sm:mb-6 tracking-tight">
-            Thank You!
+            {t('tnk.title')}
           </h2>
           <p className="text-xl sm:text-2xl md:text-3xl text-medical-cyan font-semibold mb-6 sm:mb-12">
-            Any Questions?
+            {t('tnk.sub')}
           </p>
 
           <div className="mb-8 sm:mb-16">
-            <p className="text-base sm:text-xl text-white font-medium mb-1">Albager Abdalsalam</p>
-            <p className="text-blue-200/70 uppercase tracking-widest text-xs sm:text-sm">Biomedical Engineering Department</p>
+            <p className="text-base sm:text-xl text-white font-medium mb-1">{(t('hero.presenter') as string)?.split(':')?.[1]?.trim() || 'Albager Abdalsalam'}</p>
+            <p className="text-blue-200/70 uppercase tracking-widest text-xs sm:text-sm">{t('tnk.dept')}</p>
           </div>
 
           {/* References */}
           <div className="max-w-2xl mx-auto glass-card-dark p-4 sm:p-6 rounded-2xl border border-white/10">
-            <h4 className="text-gray-400 uppercase tracking-wider text-xs font-bold mb-3 sm:mb-4">References</h4>
+            <h4 className="text-gray-400 uppercase tracking-wider text-xs font-bold mb-3 sm:mb-4">{t('tnk.ref')}</h4>
             <div className="flex flex-wrap justify-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-300">
               <span className="bg-white/5 px-2 py-1 sm:px-3 rounded-full">FDA Guidance</span>
               <span className="bg-white/5 px-2 py-1 sm:px-3 rounded-full">IEC 60601 Series</span>

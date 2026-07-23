@@ -2,28 +2,30 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Palette, ArrowUpDown, Mountain } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const EnvironmentalFactorsSection = () => {
+  const { t } = useLanguage();
   const factors = [
     {
-      name: 'Fluid Color & Opacity',
+      name: t('env.f1.name') as string,
       icon: <Palette size={24} className="text-white" />,
       iconLg: <Palette size={32} className="text-white" />,
-      desc: 'Dark or opaque fluids can affect optical sensor accuracy',
+      desc: t('env.f1.desc') as string,
       color: 'from-amber-400 to-amber-600',
     },
     {
-      name: 'Pump Height',
+      name: t('env.f2.name') as string,
       icon: <ArrowUpDown size={24} className="text-white" />,
       iconLg: <ArrowUpDown size={32} className="text-white" />,
-      desc: 'IV bag height creates hydrostatic pressure affecting flow',
+      desc: t('env.f2.desc') as string,
       color: 'from-blue-400 to-blue-600',
     },
     {
-      name: 'Altitude & Pressure',
+      name: t('env.f3.name') as string,
       icon: <Mountain size={24} className="text-white" />,
       iconLg: <Mountain size={32} className="text-white" />,
-      desc: 'Lower atmospheric pressure causes gas expansion in tubing',
+      desc: t('env.f3.desc') as string,
       color: 'from-purple-400 to-purple-600',
     }
   ];
@@ -49,10 +51,10 @@ const EnvironmentalFactorsSection = () => {
             12
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-1 sm:mb-4">
-            Engineering Challenges
+            {t('env.title1')}
           </h2>
           <h3 className="text-xs sm:text-xl text-medical-blue font-semibold">
-            Environmental & Physical Factors
+            {t('env.title2')}
           </h3>
         </div>
 
@@ -90,7 +92,7 @@ const EnvironmentalFactorsSection = () => {
 
         <div className="text-center mt-4 sm:mt-8 flex-shrink-0">
           <p className="text-gray-400 text-xs sm:text-sm italic animate-pulse">
-            Swipe through the next slides to explore each factor in detail &rarr;
+            {t('nav.scroll')}
           </p>
         </div>
       </div>

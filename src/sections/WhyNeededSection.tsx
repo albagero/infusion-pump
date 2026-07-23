@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { XCircle, CheckCircle2 } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const WhyNeededSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -23,17 +25,17 @@ const WhyNeededSection = () => {
   };
 
   const withoutPump = [
-    'Manual Injection',
-    'Inaccurate Flow',
-    'Human Error',
-    'Interrupted Delivery'
+    t('why.w1'),
+    t('why.w2'),
+    t('why.w3'),
+    t('why.w4')
   ];
 
   const withPump = [
-    'Accurate Flow',
-    'Continuous Delivery',
-    'Programmable',
-    'Improved Safety'
+    t('why.wp1'),
+    t('why.wp2'),
+    t('why.wp3'),
+    t('why.wp4')
   ];
 
   return (
@@ -44,8 +46,8 @@ const WhyNeededSection = () => {
             03
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900">
-            Why Do We Need
-            <span className="text-medical-blue"> Infusion Pumps?</span>
+            {t('why.title1')}
+            <span className="text-medical-blue">{t('why.title2')}</span>
           </h2>
         </div>
 
@@ -59,7 +61,7 @@ const WhyNeededSection = () => {
           {/* Left Card - Without Pump */}
           <motion.div variants={leftCardVariants} className="w-full sm:w-5/12">
             <div className="glass-card border-l-4 border-l-red-500 p-4 sm:p-8 h-full">
-              <h3 className="text-lg sm:text-xl font-bold text-navy-900 mb-3 sm:mb-6 text-center">Without Pump</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-navy-900 mb-3 sm:mb-6 text-center">{t('why.without')}</h3>
               <div className="space-y-2 sm:space-y-6">
                 {withoutPump.map((item, i) => (
                   <div key={i} className="flex items-center gap-3 bg-red-50/50 p-2 sm:p-4 rounded-xl">
@@ -87,7 +89,7 @@ const WhyNeededSection = () => {
           {/* Right Card - With Pump */}
           <motion.div variants={rightCardVariants} className="w-full sm:w-5/12">
             <div className="glass-card border-l-4 border-l-green-500 p-4 sm:p-8 h-full">
-              <h3 className="text-lg sm:text-xl font-bold text-navy-900 mb-3 sm:mb-6 text-center">With Infusion Pump</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-navy-900 mb-3 sm:mb-6 text-center">{t('why.with')}</h3>
               <div className="space-y-2 sm:space-y-6">
                 {withPump.map((item, i) => (
                   <div key={i} className="flex items-center gap-3 bg-green-50/50 p-2 sm:p-4 rounded-xl">

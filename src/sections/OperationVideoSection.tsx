@@ -2,8 +2,10 @@ import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const OperationVideoSection = () => {
+  const { t } = useLanguage();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [progress, setProgress] = useState(0);
 
@@ -42,10 +44,10 @@ const OperationVideoSection = () => {
         >
           <div className="text-center mt-4">
              <motion.h2 variants={itemVariants} className="text-3xl sm:text-5xl lg:text-6xl font-bold text-navy-900 mb-2 sm:mb-4 capitalize">
-                Pump <span className="text-medical-blue">Operation</span>
+                {t('vid.title1')} <span className="text-medical-blue">{t('vid.title2')}</span>
              </motion.h2>
              <motion.p variants={itemVariants} className="text-sm sm:text-lg text-gray-600 max-w-2xl mx-auto">
-               Watch the infusion pump in action
+               {t('vid.sub')}
              </motion.p>
           </div>
 

@@ -6,9 +6,11 @@ import PumpDevice from '../components/simulator/PumpDevice';
 import ScenarioPanel from '../components/simulator/ScenarioPanel';
 import AlarmTriggerPanel from '../components/simulator/AlarmTriggerPanel';
 import { Activity, ShieldAlert } from 'lucide-react';
+import { useLanguage } from '../i18n';
 
 const SimulatorSection: React.FC = () => {
   const { state, actions } = useSimulatorStore();
+  const { t } = useLanguage();
 
   const isRunningOrPaused = state.pumpState === 'RUNNING' || state.pumpState === 'PAUSED';
   const isOff = state.pumpState === 'OFF';
@@ -35,10 +37,10 @@ const SimulatorSection: React.FC = () => {
           </span>
           <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white mb-1 sm:mb-2 flex items-center justify-center gap-2">
             <Activity className="w-5 h-5 sm:w-7 sm:h-7 text-cyan-400" />
-            Interactive Pump Simulator
+            {t('sim.title')}
           </h2>
           <p className="text-white/40 text-xs sm:text-sm max-w-lg mx-auto">
-            Experience a realistic infusion pump simulation. Program, run, and troubleshoot infusions.
+            {t('sim.desc')}
           </p>
         </motion.div>
 
@@ -86,12 +88,12 @@ const SimulatorSection: React.FC = () => {
               viewport={{ once: false }}
               transition={{ delay: 0.5 }}
             >
-              <div className="font-bold text-white/30 uppercase tracking-wider mb-1">Quick Guide</div>
-              <div>1. Power On the pump</div>
-              <div>2. Select "Program" or load a scenario</div>
-              <div>3. Enter drug, rate, and volume</div>
-              <div>4. Confirm → Start</div>
-              <div>5. Try triggering alarms!</div>
+              <div className="font-bold text-white/30 uppercase tracking-wider mb-1">{t('sim.guide')}</div>
+              <div>{t('sim.g1')}</div>
+              <div>{t('sim.g2')}</div>
+              <div>{t('sim.g3')}</div>
+              <div>{t('sim.g4')}</div>
+              <div>{t('sim.g5')}</div>
             </motion.div>
           </div>
         </div>
@@ -118,7 +120,7 @@ const SimulatorSection: React.FC = () => {
         >
           <ShieldAlert size={12} className="text-amber-400/60 flex-shrink-0" />
           <span className="text-amber-400/60 text-[9px] sm:text-[10px] font-medium">
-            Educational Simulation Only — Not for Clinical Use
+            {t('sim.warn')}
           </span>
         </motion.div>
       </div>

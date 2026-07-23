@@ -3,61 +3,63 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Gauge, Radio, DoorOpen, BatteryCharging, RotateCcw, AlertTriangle, ChevronDown } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const SensorsSection = () => {
+  const { t } = useLanguage();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const sensors = [
     {
-      name: 'Pressure Sensor',
-      subtitle: 'Occlusion Detection',
+      name: t('sen.s1.name') as string,
+      subtitle: t('sen.s1.sub') as string,
       icon: <Gauge size={40} className="text-white" />,
-      desc: 'Monitors pressure in the IV line to detect downstream or upstream occlusions and trigger an alarm.',
-      failure: 'Risk of undetected blockage or wrong infusion rate',
+      desc: t('sen.s1.desc') as string,
+      failure: t('sen.s1.fail') as string,
       color: 'from-blue-500 to-medical-blue',
       accentColor: 'text-blue-600',
       bgAccent: 'bg-blue-50 border-blue-100',
       image: assetUrl('/img/sensor_pressure_1784074263751.png')
     },
     {
-      name: 'Ultrasonic Air-in-Line Sensor',
-      subtitle: 'Air Embolism Prevention',
+      name: t('sen.s2.name') as string,
+      subtitle: t('sen.s2.sub') as string,
       icon: <Radio size={40} className="text-white" />,
-      desc: 'Uses ultrasonic waves to detect air bubbles in the IV tubing and stop infusion to prevent air embolism.',
-      failure: 'Risk of air embolism — life threatening',
+      desc: t('sen.s2.desc') as string,
+      failure: t('sen.s2.fail') as string,
       color: 'from-cyan-400 to-cyan-600',
       accentColor: 'text-cyan-600',
       bgAccent: 'bg-cyan-50 border-cyan-100',
       image: assetUrl('/img/sensor_ultrasonic_1784074271813.png')
     },
     {
-      name: 'Door Sensor',
-      subtitle: 'Safety Interlock',
+      name: t('sen.s3.name') as string,
+      subtitle: t('sen.s3.sub') as string,
       icon: <DoorOpen size={40} className="text-white" />,
-      desc: 'Ensures the pump door is securely closed before infusion begins. Prevents operation if the door is open.',
-      failure: 'Pump may run without proper tubing alignment',
+      desc: t('sen.s3.desc') as string,
+      failure: t('sen.s3.fail') as string,
       color: 'from-amber-400 to-amber-600',
       accentColor: 'text-amber-600',
       bgAccent: 'bg-amber-50 border-amber-100',
       image: assetUrl('/img/sensor_door_1784074280324.png')
     },
     {
-      name: 'Battery Sensor',
-      subtitle: 'Power Management',
+      name: t('sen.s4.name') as string,
+      subtitle: t('sen.s4.sub') as string,
       icon: <BatteryCharging size={40} className="text-white" />,
-      desc: 'Monitors battery voltage, charging status, and remaining charge. Triggers a low-battery alarm when needed.',
-      failure: 'Unexpected power loss during critical infusion',
+      desc: t('sen.s4.desc') as string,
+      failure: t('sen.s4.fail') as string,
       color: 'from-green-400 to-green-600',
       accentColor: 'text-green-600',
       bgAccent: 'bg-green-50 border-green-100',
       image: assetUrl('/img/sensor_battery_1784074296460.png')
     },
     {
-      name: 'Motor Encoder',
-      subtitle: 'Motor Position Sensor',
+      name: t('sen.s5.name') as string,
+      subtitle: t('sen.s5.sub') as string,
       icon: <RotateCcw size={40} className="text-white" />,
-      desc: 'Verifies motor rotation and delivery accuracy. Helps detect motor stalls or drive errors during operation.',
-      failure: 'Inaccurate medication delivery or motor stall',
+      desc: t('sen.s5.desc') as string,
+      failure: t('sen.s5.fail') as string,
       color: 'from-purple-400 to-purple-600',
       accentColor: 'text-purple-600',
       bgAccent: 'bg-purple-50 border-purple-100',
@@ -88,9 +90,9 @@ const SensorsSection = () => {
             07
           </span>
           <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-navy-900 mb-1 sm:mb-2">
-            Sensors in Infusion Pump
+            {t('sen.title')}
           </h2>
-          <p className="text-xs sm:text-sm text-gray-500 font-medium">Tap a sensor to see its failure effect</p>
+          <p className="text-xs sm:text-sm text-gray-500 font-medium">{t('sen.subtitle')}</p>
         </div>
 
         {/* === MOBILE: Compact scrollable list === */}
@@ -143,7 +145,7 @@ const SensorsSection = () => {
                       <div className={`mt-3 p-3 rounded-xl ${sensor.bgAccent} border flex items-center gap-3`}>
                         <AlertTriangle size={16} className="text-red-500 flex-shrink-0" />
                         <div>
-                          <span className="text-[11px] font-bold text-red-600 block">If sensor fails:</span>
+                          <span className="text-[11px] font-bold text-red-600 block">{t('sen.fails')}</span>
                           <span className="text-[11px] font-semibold text-red-700">{sensor.failure}</span>
                         </div>
                       </div>

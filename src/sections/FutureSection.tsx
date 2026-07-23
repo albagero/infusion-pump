@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BrainCircuit, Wifi, Database, TrendingUp, Smartphone } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const FutureSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -18,11 +20,11 @@ const FutureSection = () => {
   };
 
   const trends = [
-    { name: 'AI-Assisted Monitoring', icon: <BrainCircuit size={24} />, desc: 'Predictive analytics for flow optimization' },
-    { name: 'IoT Connectivity', icon: <Wifi size={24} />, desc: 'Real-time wireless fleet management' },
-    { name: 'Electronic Health Integration', icon: <Database size={24} />, desc: 'Auto-programming from EMR systems' },
-    { name: 'Predictive Maintenance', icon: <TrendingUp size={24} />, desc: 'Alerts before components fail' },
-    { name: 'Remote Control & Alerts', icon: <Smartphone size={24} />, desc: 'Monitor infusions from mobile devices' }
+    { name: t('fut.t1.name') as string, icon: <BrainCircuit size={24} />, desc: t('fut.t1.desc') as string },
+    { name: t('fut.t2.name') as string, icon: <Wifi size={24} />, desc: t('fut.t2.desc') as string },
+    { name: t('fut.t3.name') as string, icon: <Database size={24} />, desc: t('fut.t3.desc') as string },
+    { name: t('fut.t4.name') as string, icon: <TrendingUp size={24} />, desc: t('fut.t4.desc') as string },
+    { name: t('fut.t5.name') as string, icon: <Smartphone size={24} />, desc: t('fut.t5.desc') as string }
   ];
 
   return (
@@ -45,8 +47,8 @@ const FutureSection = () => {
               14
             </span>
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 lg:mb-10 leading-tight">
-              The Future of<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-medical-cyan to-blue-400">Infusion Pumps</span>
+              {t('fut.title1')}<br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-medical-cyan to-blue-400">{t('fut.title2')}</span>
             </h2>
 
             <motion.div 

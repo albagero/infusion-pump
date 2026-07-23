@@ -2,8 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Settings, CheckCircle2, Shield, Battery, ClipboardCheck, Eye, ArrowDown, CalendarDays } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
+import { useLanguage } from '../i18n';
 
 const MaintenanceChecklistSection = () => {
+  const { t } = useLanguage();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
@@ -16,35 +18,35 @@ const MaintenanceChecklistSection = () => {
 
   const checklistGroups = [
     {
-      title: 'Visual Inspection',
+      title: t('mc.c1.title') as string,
       icon: <Eye size={16} className="text-blue-500" />,
       color: 'border-blue-200 bg-blue-50/30',
-      items: ['Housing for cracks/damage', 'Power cord & connectors', 'Tubing holder & pump door']
+      items: [t('mc.c1.l1') as string, t('mc.c1.l2') as string, t('mc.c1.l3') as string]
     },
     {
-      title: 'Functional Tests',
+      title: t('mc.c2.title') as string,
       icon: <Settings size={16} className="text-purple-500" />,
       color: 'border-purple-200 bg-purple-50/30',
-      items: ['Flow-rate accuracy', 'Occlusion & air-in-line alarms', 'Door-open & low-battery alarms']
+      items: [t('mc.c2.l1') as string, t('mc.c2.l2') as string, t('mc.c2.l3') as string]
     },
     {
-      title: 'Electrical & Battery',
+      title: t('mc.c3.title') as string,
       icon: <Battery size={16} className="text-amber-500" />,
       color: 'border-amber-200 bg-amber-50/30',
-      items: ['Battery charging & runtime', 'Electrical safety testing', 'Display, keypad & buzzer']
+      items: [t('mc.c3.l1') as string, t('mc.c3.l2') as string, t('mc.c3.l3') as string]
     },
     {
-      title: 'Documentation',
+      title: t('mc.c4.title') as string,
       icon: <ClipboardCheck size={16} className="text-green-500" />,
       color: 'border-green-200 bg-green-50/30',
-      items: ['Record all test results', 'Replace worn parts', 'Attach PM label & update records']
+      items: [t('mc.c4.l1') as string, t('mc.c4.l2') as string, t('mc.c4.l3') as string]
     }
   ];
 
   const workflowSteps = [
-    'Receive Pump', 'Visual Inspection', 'Mechanical Check',
-    'Functional Tests', 'Battery & Safety', 'Calibration',
-    'Documentation', 'Return to Use'
+    t('mc.wf1'), t('mc.wf2'), t('mc.wf3'),
+    t('mc.wf4'), t('mc.wf5'), t('mc.wf6'),
+    t('mc.wf7'), t('mc.wf8')
   ];
 
   return (
@@ -53,7 +55,7 @@ const MaintenanceChecklistSection = () => {
         
         <div className="text-center mb-3 sm:mb-5 flex-shrink-0">
           <span className="text-medical-blue/40 text-sm font-bold tracking-widest uppercase mb-0.5 block">16</span>
-          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-navy-900">Preventive Maintenance</h2>
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-navy-900">{t('mc.title')}</h2>
         </div>
 
         <motion.div 
@@ -67,7 +69,7 @@ const MaintenanceChecklistSection = () => {
           <motion.div variants={itemVariants} className="lg:col-span-2">
             <div className="glass-card rounded-2xl p-3 sm:p-5 h-full">
               <h3 className="text-base sm:text-lg font-bold text-navy-900 mb-3 flex items-center gap-2">
-                <Shield size={18} className="text-medical-blue" /> PM Checklist
+                <Shield size={18} className="text-medical-blue" /> {t('mc.chk')}
               </h3>
               <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {checklistGroups.map((group, index) => (
@@ -96,7 +98,7 @@ const MaintenanceChecklistSection = () => {
             {/* Workflow */}
             <div className="glass-card rounded-2xl p-3 sm:p-4 flex-1">
               <h3 className="text-base sm:text-lg font-bold text-navy-900 mb-3 flex items-center gap-2">
-                <ClipboardCheck size={18} className="text-purple-500" /> PM Workflow
+                <ClipboardCheck size={18} className="text-purple-500" /> {t('mc.wf')}
               </h3>
               <div className="flex flex-col items-center gap-0">
                 {workflowSteps.map((step, index) => (
@@ -121,20 +123,20 @@ const MaintenanceChecklistSection = () => {
             {/* Schedule */}
             <div className="glass-card rounded-2xl p-3 sm:p-4 border-l-4 border-l-amber-400">
               <h4 className="text-xs sm:text-sm font-bold text-navy-900 mb-2 flex items-center gap-1.5">
-                <CalendarDays size={14} className="text-amber-500" /> PM Schedule
+                <CalendarDays size={14} className="text-amber-500" /> {t('mc.sch')}
               </h4>
               <div className="space-y-1.5 text-[10px] sm:text-xs">
                 <div className="flex gap-2">
-                  <span className="font-bold text-gray-800 w-24 flex-shrink-0">Before each use</span>
-                  <span className="text-gray-600">Visual inspection, self-test</span>
+                  <span className="font-bold text-gray-800 w-24 flex-shrink-0">{t('mc.s1.t')}</span>
+                  <span className="text-gray-600">{t('mc.s1.d')}</span>
                 </div>
                 <div className="flex gap-2">
-                  <span className="font-bold text-gray-800 w-24 flex-shrink-0">Every 6–12 mo</span>
-                  <span className="text-gray-600">Functional test, calibration</span>
+                  <span className="font-bold text-gray-800 w-24 flex-shrink-0">{t('mc.s2.t')}</span>
+                  <span className="text-gray-600">{t('mc.s2.d')}</span>
                 </div>
                 <div className="flex gap-2">
-                  <span className="font-bold text-gray-800 w-24 flex-shrink-0">As needed</span>
-                  <span className="text-gray-600">Replace battery, worn parts</span>
+                  <span className="font-bold text-gray-800 w-24 flex-shrink-0">{t('mc.s3.t')}</span>
+                  <span className="text-gray-600">{t('mc.s3.d')}</span>
                 </div>
               </div>
             </div>

@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import SlideWrapper from '../components/SlideWrapper';
 import { assetUrl } from '../utils/assetUrl';
+import { useLanguage } from '../i18n';
 
 const HeroSection = () => {
+  const { t } = useLanguage();
   return (
     <SlideWrapper className="bg-hero-gradient" id="hero">
       <div className="w-full h-full flex flex-col lg:flex-row relative overflow-hidden">
@@ -32,21 +34,21 @@ const HeroSection = () => {
               01
             </span>
             <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold text-white mb-3 sm:mb-4 tracking-tight">
-              Infusion Pump
+              {t('hero.title')}
             </h1>
             <h2 className="text-lg sm:text-2xl lg:text-3xl font-semibold gradient-text mb-4 sm:mb-6">
-              Intelligent. Precise. Reliable.
+              {t('hero.subtitle')}
             </h2>
             <p className="text-sm sm:text-base lg:text-lg text-gray-300 max-w-md mb-6 sm:mb-10">
-              Advancing Patient Care Through Technology and Innovation
+              {t('hero.desc')}
             </p>
 
             <div className="mt-4 sm:mt-8 border-t border-white/10 pt-4 sm:pt-8">
               <p className="text-xs sm:text-sm text-gray-400 uppercase tracking-wider mb-1 sm:mb-2">
-                Biomedical Engineering Workshop
+                {t('hero.workshop')}
               </p>
               <p className="text-base sm:text-lg text-white font-medium">
-                Presented by Albager Abdalsalam
+                {t('hero.presenter')}
               </p>
             </div>
           </motion.div>

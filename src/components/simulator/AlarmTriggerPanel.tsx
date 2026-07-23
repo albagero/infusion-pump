@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ALARM_INFO, AlarmType } from '../../hooks/useSimulatorStore';
 import { AlertTriangle } from 'lucide-react';
+import { useLanguage } from '../../i18n';
 
 interface AlarmTriggerPanelProps {
   onTriggerAlarm: (alarmType: AlarmType, message: string) => void;
@@ -17,11 +18,12 @@ const alarmButtons: { type: AlarmType; label: string; color: string }[] = [
 ];
 
 const AlarmTriggerPanel: React.FC<AlarmTriggerPanelProps> = ({ onTriggerAlarm, isDisabled }) => {
+  const { t } = useLanguage();
   return (
     <div className="w-full">
       <div className="text-[10px] sm:text-xs uppercase tracking-wider text-red-400/50 font-bold mb-2 text-center flex items-center justify-center gap-1">
         <AlertTriangle size={10} />
-        Test Alarms
+        {t('sim.alarm')}
       </div>
       <div className="flex lg:flex-wrap gap-1.5 overflow-x-auto lg:overflow-visible pb-1 px-1 snap-x snap-mandatory lg:snap-none"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
