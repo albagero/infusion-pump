@@ -21,24 +21,11 @@ const Navigation: React.FC<NavigationProps> = ({ currentSlide, totalSlides, prog
       {/* Progress Bar */}
       <div className="progress-bar" style={{ width: `${progress}%` }} />
 
-      {/* Top Start - Language Toggle */}
-      <motion.button
-        onClick={toggleLang}
-        className={`fixed top-3 sm:top-6 start-3 sm:start-8 z-50 flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full backdrop-blur-md shadow-sm border transition-all hover:scale-105 active:scale-95 ${isHeroOrDark ? 'bg-black/20 text-white border-white/10 hover:bg-black/40' : 'bg-white/60 text-navy-900 border-gray-200/50 hover:bg-white/90'}`}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5, duration: 0.6 }}
-      >
-        <Globe size={16} className={isHeroOrDark ? 'text-white/70' : 'text-medical-blue'} />
-        <span className="text-xs sm:text-sm font-bold tracking-wide">
-          {lang === 'en' ? 'عربي' : 'English'}
-        </span>
-      </motion.button>
-
-      {/* Top End - Slide Counter */}
+      {/* Top Left - Slide Counter (Fixed Position LTR & RTL) */}
       <motion.div
-        className="fixed top-3 sm:top-6 end-3 sm:end-8 z-50"
-        initial={{ opacity: 0, x: 20 }}
+        className="fixed top-3 sm:top-6 left-3 sm:left-8 z-50"
+        dir="ltr"
+        initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.6 }}
       >
@@ -64,6 +51,20 @@ const Navigation: React.FC<NavigationProps> = ({ currentSlide, totalSlides, prog
           <span className="opacity-70">{totalNumber}</span>
         </div>
       </motion.div>
+
+      {/* Top Right - Language Toggle (Fixed Position LTR & RTL) */}
+      <motion.button
+        onClick={toggleLang}
+        className={`fixed top-3 sm:top-6 right-3 sm:right-8 z-50 flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full backdrop-blur-md shadow-sm border transition-all hover:scale-105 active:scale-95 ${isHeroOrDark ? 'bg-black/20 text-white border-white/10 hover:bg-black/40' : 'bg-white/60 text-navy-900 border-gray-200/50 hover:bg-white/90'}`}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+      >
+        <Globe size={16} className={isHeroOrDark ? 'text-white/70' : 'text-medical-blue'} />
+        <span className="text-xs sm:text-sm font-bold tracking-wide">
+          {lang === 'en' ? 'عربي' : 'English'}
+        </span>
+      </motion.button>
 
       {/* Bottom Center - Navigation Hint */}
       {currentSlide < totalSlides - 1 && (
